@@ -2,3 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base{
+    body {
+        @apply text-primary-dark dark:text-primary-light
+    }
+}
+
+@layer components {
+    .primary-text{
+        @apply text-primary-dark dark:text-white
+    }
+}
+
+@layer components {
+    .highlight-text{
+        @apply text-turquoise 
+    }
+}
+
+@layer components {
+    .secondary-text{
+        @apply text-primary-dark text-opacity-70 dark:text-white dark:text-opacity-70
+    }
+}
+
+@layer components {
+    .side-btn{
+        @apply bg-light-turquoise text-dark-turquoise dark:border dark:border-white dark:border-opacity-50 dark:bg-primary-dark dark:text-turquoise
+    }
+}
