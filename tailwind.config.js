@@ -11,6 +11,20 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        rotate: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(180deg)' },
+        },
+        rotateback: {
+          '0%': { transform: 'rotate(180deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        }
+      },
+      animation: {
+        rotate: 'rotate 1s linear',
+        rotateback: 'rotateback 1s linear',
+      },
       colors: {
         'primary-dark': '#2C2D32',
         'primary-light': '#FFFFFF',
@@ -20,7 +34,7 @@ module.exports = {
       },
       fontFamily: {
         sans: 'Helvetica, Arial, sans-serif'
-      }
+      },
     },
   },
   plugins: [],

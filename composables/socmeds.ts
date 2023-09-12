@@ -10,24 +10,24 @@ export const socmedData: Ref<SocmedInterface[]> = ref([
         id: 0,
         username: 'fulan',
         link: '',
-        icon: "['fab', 'whatsapp']",
+        icon: "ic:baseline-whatsapp",
     },
     {
         id: 1,
         username: 'fulan',
         link: '',
-        icon: "['fab', 'telegram']",
+        icon: "tabler:brand-telegram",
     },
     {
         id: 2,
         username: 'fulan',
         link: '',
-        icon: "['fab', 'linkedin']",
+        icon: "ri:linkedin-box-line",
     },
     {
         id: 3,
         username: 'fulan',
         link: '',
-        icon: "['fab', 'instagram']",
+        icon: "mdi:instagram",
     }
 ])

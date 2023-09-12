@@ -15,7 +15,7 @@ const mode = computed(() => store.value === 'auto' ? system.value : store.value)
 <template>
   <div class="bg-primary-light dark:bg-primary-dark">
     <NuxtLayout>
-      <h1 class="h-screen w-full flex items-center justify-center"> {{ mode }} </h1>
+      <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
