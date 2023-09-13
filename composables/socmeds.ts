@@ -9,7 +9,7 @@ export const socmedData: Ref<SocmedInterface[]> = ref([
     {
         id: 0,
         username: 'fulan',
-        link: '',
+        link: 'https://wa.me/087894524561',
         icon: "ic:baseline-whatsapp",
     },
     {

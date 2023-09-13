@@ -30,7 +30,8 @@ module.exports = {
         'primary-light': '#FFFFFF',
         'turquoise': '#30D5C8',
         'light-turquoise': '#D4FFFC',
-        'dark-turquoise': '#06768D'
+        'dark-turquoise': '#06768D',
+        'accent-color': '#F0BF6C'
       },
       fontFamily: {
         sans: 'Helvetica, Arial, sans-serif'

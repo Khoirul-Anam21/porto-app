@@ -1,22 +1,20 @@
 <template>
-    <div class="">
-      <div class="h-screen bg-slate-300 pt-24 flex items-center justify-center">
-        <h1 class="">Hai</h1>
+    <div class="mx-20">
+      <div id="main" class="h-screen pt-24 flex items-center justify-center">
+        <MainPageComponent />
       </div>
-      <div class="h-screen w-full bg-green-300 pt-24 flex items-center justify-center">
-        <h1 class="">Hai</h1>
+      <div id="about" class="h-screen w-full flex items-center pt-24 justify-center">
+        <AboutPageComponent />
       </div>
-      <div class="relative h-screen bg-red-300 pt-24 flex items-center justify-center">
-        <h1 class="">Hai</h1>
+      <div id="skill" class="relative h-screen border-4 pt-24 border-y-primary-dark  dark:border-y-turquoise my-10 ">
+        <SkillPageComponent />
       </div>
-      <div class="relative h-screen bg-blue-300 pt-24 flex items-center justify-center">
-        <h1 class="">Hai</h1>
+      <div id="project" class="relative h-screen pt-24 flex items-center justify-center">
+        <ProjectPageComponent />
       </div>
-      <div class="relative h-screen bg-orange-300 pt-24 flex items-center justify-center">
-        <h1 class="">Hai</h1>
+      <div id="experience" class="relative h-screen pt-24 flex items-start justify-center">
+        <ExperiencePageComponent />
       </div>
-      <div class="relative h-screen bg-gray-300 pt-24 flex items-center justify-center">
-        <h1 class="">Hai</h1>
-      </div>
+
     </div>
 </template>

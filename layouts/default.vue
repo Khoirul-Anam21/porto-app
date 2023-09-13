@@ -9,37 +9,42 @@ const toggleDarkTheme = () => {
         return;
     }
     colorMode.value = 'light';
+};
+
+const goTo = (reference: string) => {
+    const element = document.getElementById(reference);
+    if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+    }
 }
 
-const isDark = computed(() => colorMode.value === 'dark')
+const isDark = computed(() => colorMode.value === 'dark');
 </script>
 
 <template>
     <div>
         <header class="bg-white dark:bg-primary-dark w-full p-8 fixed top-0 shadow-lg dark:shadow-none z-50">
             <nav class="flex justify-between items-center">
-                <div class="primary-text text-2xl">
-                    Lorem <span class="highlight-text">{{ isDark }}</span>
+                <div @click="goTo('main')" class="primary-text cursor-pointer text-2xl">
+                    Khoirul <span class="highlight-text">Anam</span>
                 </div>
                 <div>
                     <ul class="flex space-x-9 secondary-text text-sm">
-                        <li>About Me</li>
-                        <li>Skills</li>
-                        <li>Projects</li>
-                        <li>Experiences</li>
-                        <li>Backgrounds</li>
+                        <li @click="goTo('about')" class="cursor-pointer">About Me</li>
+                        <li @click="goTo('skill')" class="cursor-pointer">Skills</li>
+                        <li @click="goTo('project')" class="cursor-pointer">Projects</li>
+                        <li @click="goTo('experience')" class="cursor-pointer">Experiences</li>
                     </ul>
-                </div>
-                <div class="primary-text">
-                    Contact me
                 </div>
             </nav>
         </header>
         <div class="fixed w-full z-10 top-1/3 right-0 flex items-center justify-between">
             <div @click="toggleDarkTheme"
                 class="w-24 h-24 rounded-full -translate-x-1/2 flex items-center justify-center side-btn shadow-lg cursor-pointer">
-                <div class="flex justify-between w-full p-3" :class="{ 'animate-rotate fill-mode-forward': isDark, 'animate-rotateback fill-mode-forward': !isDark }">
-                    <Icon name="material-symbols:dark-mode-outline" :class="{'rotate-180': !isDark,'-rotate-180': isDark }"  size="28" />
+                <div class="flex justify-between w-full p-3"
+                    :class="{ 'animate-rotate fill-mode-forward': isDark, 'animate-rotateback fill-mode-forward': !isDark }">
+                    <Icon name="material-symbols:dark-mode-outline" :class="{ 'rotate-180': !isDark, '-rotate-180': isDark }"
+                        size="28" />
                     <Icon name="material-symbols:light-mode-outline" size="28" />
                 </div>
             </div>
@@ -54,9 +59,7 @@ const isDark = computed(() => colorMode.value === 'dark')
 </template>
 
 <style scoped>
-
 .fill-mode-forward {
     animation-fill-mode: forwards;
 }
-
 </style>

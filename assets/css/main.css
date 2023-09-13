@@ -27,6 +27,11 @@
 }
 
 @layer components {
+    .primary-btn{
+        @apply bg-dark-turquoise text-primary-light px-4 py-2 shadow-lg  dark:border dark:border-turquoise dark:bg-primary-dark dark:shadow-none
+    }
+}
+@layer components {
     .side-btn{
         @apply bg-light-turquoise text-dark-turquoise dark:border dark:border-white dark:border-opacity-50 dark:bg-primary-dark dark:text-turquoise
     }
