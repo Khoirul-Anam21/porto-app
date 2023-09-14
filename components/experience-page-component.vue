@@ -15,7 +15,7 @@
                         <p class="text-sm font-light">Feb 2023 - Aug 2023</p>
                     </div>
                     <div class="flex items-center gap-2">
-                        <p class="inline-block text-lg">
+                        <p class="inline-block text-lg font-bold highlight-text">
                            IT Internship at PointHub
                         </p>
                     </div>

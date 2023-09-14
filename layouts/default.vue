@@ -1,8 +1,10 @@
 <script setup lang="ts">
 // import { useColorMode } from '@vueuse/core'
 import { socmedData } from '@/composables/socmeds';
+import { useStateStore } from '@/stores/index';
 
-const colorMode = useColorMode()
+const colorMode = useColorMode();
+const stateStore = useStateStore();
 const toggleDarkTheme = () => {
     if (colorMode.value === 'light') {
         colorMode.value = 'dark';
@@ -19,6 +21,25 @@ const goTo = (reference: string) => {
 }
 
 const isDark = computed(() => colorMode.value === 'dark');
+
+const openSocmedPage = (url: string) => {
+    window.open(url, '_blank');
+}
+
+watch(stateStore.$state, (newV, oldV) => {
+    console.log(newV);
+    if (!newV.socmedActive) {
+        return
+    }
+    setTimeout(() => {
+        if (stateStore.$state.socmedIndex === 5) {
+            stateStore.$state.socmedIndex = 0
+            return;
+        }
+        stateStore.$state.socmedIndex++
+    }, 1000);
+});
+
 </script>
 
 <template>
@@ -43,13 +64,14 @@ const isDark = computed(() => colorMode.value === 'dark');
                 class="w-24 h-24 rounded-full -translate-x-1/2 flex items-center justify-center side-btn shadow-lg cursor-pointer">
                 <div class="flex justify-between w-full p-3"
                     :class="{ 'animate-rotate fill-mode-forward': isDark, 'animate-rotateback fill-mode-forward': !isDark }">
-                    <Icon name="material-symbols:dark-mode-outline" :class="{ 'rotate-180': !isDark, '-rotate-180': isDark }"
-                        size="28" />
+                    <Icon name="material-symbols:dark-mode-outline"
+                        :class="{ 'rotate-180': !isDark, '-rotate-180': isDark }" size="28" />
                     <Icon name="material-symbols:light-mode-outline" size="28" />
                 </div>
             </div>
             <div class="flex flex-col space-y-1">
-                <button v-for="(item, index) in socmedData" :key="index" class="side-btn p-2">
+                <button v-for="(item, index) in socmedData" :key="index" class="side-btn p-2" @click="openSocmedPage(item.link)"
+                    :class="{ 'animate-horizontalBounce': stateStore.$state.socmedIndex === index && stateStore.$state.socmedActive }">
                     <Icon :name="item.icon" size="24" />
                 </button>
             </div>
