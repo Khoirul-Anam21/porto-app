@@ -26,6 +26,10 @@ const openSocmedPage = (url: string) => {
     window.open(url, '_blank');
 }
 
+const { x, y } = useWindowScroll();
+
+const isScrolledEnough = computed(() => y.value > 200);
+
 watch(stateStore.$state, (newV, oldV) => {
     console.log(newV);
     if (!newV.socmedActive) {
@@ -44,13 +48,13 @@ watch(stateStore.$state, (newV, oldV) => {
 
 <template>
     <div>
-        <header class="bg-white dark:bg-primary-dark w-full p-8 fixed top-0 shadow-lg dark:shadow-none z-50">
-            <nav class="flex justify-between items-center">
+        <header class="w-full p-8 fixed top-0  z-50" :class="{'bg-white dark:bg-primary-dark': isScrolledEnough}">
+            <nav class="flex justify-between items-center" >
                 <div @click="goTo('main')" class="primary-text cursor-pointer text-2xl">
                     Khoirul <span class="highlight-text">Anam</span>
                 </div>
                 <div>
-                    <ul class="flex space-x-9 secondary-text text-sm">
+                    <ul class="flex space-x-9 text-sm" :class="{'text-primary-dark': isScrolledEnough && !isDark, 'text-white': !isScrolledEnough}">
                         <li @click="goTo('about')" class="cursor-pointer">About Me</li>
                         <li @click="goTo('skill')" class="cursor-pointer">Skills</li>
                         <li @click="goTo('project')" class="cursor-pointer">Projects</li>

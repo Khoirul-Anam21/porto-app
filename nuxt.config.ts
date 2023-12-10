@@ -8,5 +8,6 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  plugins: ["~/plugins/preline.client.ts"],
   modules: ['@vueuse/nuxt', 'nuxt-icon', '@pinia/nuxt']
 })

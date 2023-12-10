@@ -8,6 +8,7 @@ module.exports = {
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
     "./app.vue",
+    './node_modules/preline/preline.js'
   ],
   theme: {
     extend: {
@@ -49,6 +50,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('preline/plugin')],
 }
 

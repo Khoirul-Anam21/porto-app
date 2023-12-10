@@ -1,6 +1,6 @@
 <template>
     <div class="">
-      <div id="main" class="px-10 md:px-20 h-screen pt-24 flex items-center justify-center">
+      <div id="main" class=" h-screen flex items-center justify-center">
         <MainPageComponent />
       </div>
       <div id="about" class="px-10 md:px-20 h-screen w-full flex items-center pt-24 justify-center">
