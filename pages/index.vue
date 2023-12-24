@@ -12,6 +12,9 @@
       <div id="project" class="px-14 md:px-20 relative h-screen pt-24 fle flex-col items-center justify-center">
         <ProjectPageComponent />
       </div>
+      <div id="project" class="px-14 md:px-20 relative h-max pt-24 fle flex-col items-center justify-center">
+        <ProjectPgComponent />
+      </div>
       <div id="experience" class="px-10 md:px-20 relative h-screen pt-24 flex items-start justify-center">
         <ExperiencePageComponent />
       </div>

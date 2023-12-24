@@ -14,7 +14,7 @@ export const projectData: Ref<ProjectInterface[]> = ref([
         description: 'An LMS application that facilitates the students and teachers through learning platform',
         repo: "https://github.com/Khoirul-Anam21/lms-cataliz-FE",
         link: 'http://think-action-api.ap-southeast-2.elasticbeanstalk.com/',
-        techstacks: ["Vue.js", "Express.js", "MongoDB", "TypeScript"],
+        techstacks: ["Vue.js", "Express", "MongoDB", "TypeScript"],
     },
     {
         title: "Think Action",
@@ -22,7 +22,7 @@ export const projectData: Ref<ProjectInterface[]> = ref([
         description: 'A REST API of a social media app that mainly about goal achievements',
         link: 'https://documenter.getpostman.com/view/19302442/2s9YC4WDPm',
         repo: "https://github.com/Khoirul-Anam21/think-action-BE",
-        techstacks: ["Express.js", "MongoDB", "TypeScript"],
+        techstacks: ["Express", "MongoDB", "TypeScript"],
     },
     {
         title: "Personal Website",
@@ -30,6 +30,6 @@ export const projectData: Ref<ProjectInterface[]> = ref([
         description: 'My own personal website for the repository of portofolios and my CV',
         link: 'https://anam-lms-app.vercel.app/',
         repo: "https://github.com/Khoirul-Anam21/porto-app",
-        techstacks: ["Express.js", "MongoDB", "TypeScript"],
+        techstacks: ["Express", "MongoDB", "TypeScript"],
     },
 ])
