@@ -36,7 +36,7 @@
                     <!-- Title -->
                     <div class="space-y-2 md:space-y-4">
                         <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                            Collaborative tools to design user experience
+                            About Me
                         </h2>
                         <p class="text-gray-500">
                             Anam is a graduate Bachelor of Information Systems and Diploma in English (double degree program) at Merdeka Malang University. Graduated in BackEnd JavaScript Bootcamp by Binar Academy and BackEnd Golang by Hacktiv8 in Kampus Merdeka Program. Have knowledge of <span class="highlight-text">Back-End Development</span> using NodeJS Express and <span class="highlight-text">Front-End Development</span> using Vue.js and Nuxt. Also has the knowledge of <span class="highlight-text">Mobile App Development</span> using Dart and Flutter

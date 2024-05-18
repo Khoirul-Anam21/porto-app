@@ -8,6 +8,12 @@
     }
 }
 
+@layer base{
+    html {
+        @apply scroll-smooth
+    }
+}
+
 @layer components {
     .primary-text{
         @apply text-primary-dark dark:text-white

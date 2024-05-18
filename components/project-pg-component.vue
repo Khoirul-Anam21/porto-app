@@ -24,7 +24,7 @@ const getIconinSkills = (skill: string) => {
             <!-- Card -->
             <a v-for="(item, index) in projectData" :key="index" :project="item"
                 class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                href="/project/tes">
+                href="/projects/tes">
                 <div class="aspect-w-16 aspect-h-11">
                     <img class="w-full object-cover rounded-xl" :src="item.thumbnail" alt="Image Description">
                 </div>
