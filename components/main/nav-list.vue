@@ -6,15 +6,14 @@ import { ref, onMounted, onUnmounted } from 'vue';
 </script>
 
 <template>
-  <section class="basis-[10%] md:basis-[12%] scroll-container" >
-    <div class="flex flex-row space-x-4">
-      <MainBaseNavBtn />
-      <MainBaseNavBtn />
-      <MainBaseNavBtn />
-      <MainBaseNavBtn />
-      <MainBaseNavBtn />
-    </div>
-  </section>
+  <header class="basis-[10%] md:basis-[12%] scroll-container" >
+    <nav class="flex flex-row space-x-4">
+      <MainBaseNavBtn name="About Me" route="/"/>
+      <MainBaseNavBtn name="Projects" route="/projects"/>
+      <MainBaseNavBtn name="Experiences" route="/experiences"/>
+      <MainBaseNavBtn name="Educations & Skills" route="/educations" />
+    </nav>
+  </header>
 </template>
 
 <style scoped>

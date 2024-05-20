@@ -13,10 +13,11 @@ const mode = computed(() => store.value === 'auto' ? system.value : store.value)
 
 
 <template>
-  <div class="bg-primary-light dark:bg-primary-dark scroll-smooth">
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+    <div class="scroll-smooth">
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </div>
 </template>
+
 

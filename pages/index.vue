@@ -1,7 +1,7 @@
 <template>
-    <div class="scroll-smooth">
+    <section class="scroll-smooth">
       <div id="main" class=" h-screen flex items-center justify-center">
-        <MainPageComponent />
+        Tes
       </div>
-    </div>
+    </section>
 </template>

@@ -48,51 +48,8 @@ watch(stateStore.$state, (newV, oldV) => {
 
 <template>
     <div>
-        <header class="w-full p-8 fixed top-0  z-50" :class="{ 'bg-white dark:bg-primary-dark': isScrolledEnough }">
-            <!-- <nav class="sm:flex">
-                <div class="flex justify-between items-center w-full">
-                    <div @click="goTo('main')" class="primary-text cursor-pointer text-2xl">
-                        Khoirul <span class="highlight-text">Anam</span>
-                    </div>
-                    <div class="sm:hidden">
-                        <button type="button"
-                            class="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            data-hs-collapse="#navbar-collapse-with-animation"
-                            aria-controls="navbar-collapse-with-animation" aria-label="Toggle navigation">
-                            <svg class="hs-collapse-open:hidden flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
-                                width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="3" x2="21" y1="6" y2="6" />
-                                <line x1="3" x2="21" y1="12" y2="12" />
-                                <line x1="3" x2="21" y1="18" y2="18" />
-                            </svg>
-                            <svg class="hs-collapse-open:block hidden flex-shrink-0 size-4"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M18 6 6 18" />
-                                <path d="m6 6 12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div id="navbar-collapse-with-animation"
-                    class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block">
-                    <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5" :class="{ 'text-primary-dark': isScrolledEnough && !isDark, 'text-white': !isScrolledEnough }">
-                        <NuxtLink smooth class="font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="#about" aria-current="page">About Me</NuxtLink>
-                        <NuxtLink smooth class="font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="#skill">Skills</NuxtLink>
-                        <NuxtLink smooth class="font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="#project">Projects</NuxtLink>
-                        <NuxtLink smooth class="font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            href="#experience">Experiences</NuxtLink>
-                    </div>
-                </div>
-            </nav> -->
-        </header>
-        <div class="fixed w-full z-20 top-1/3 right-0 bg-slate-400">
+        <!-- Dark mode toggle -->
+        <div class="fixed w-full z-50 top-1/3 right-0 bg-slate-400">
             <div @click="toggleDarkTheme"
                 class="absolute top-1/2 left-0 w-24 h-24 rounded-full -translate-x-1/2 flex items-center justify-center side-btn shadow-lg cursor-pointer">
                 <div class="flex justify-between w-full p-3"
@@ -102,15 +59,71 @@ watch(stateStore.$state, (newV, oldV) => {
                     <Icon name="material-symbols:light-mode-outline" size="28" />
                 </div>
             </div>
-            <!-- <div class="absolute top-1/3 right-0 inline-flex flex-col space-y-1">
-                <button v-for="(item, index) in socmedData" :key="index" class="side-btn p-2"
-                    @click="openSocmedPage(item.link)"
-                    :class="{ 'animate-horizontalBounce': stateStore.$state.socmedIndex === index && stateStore.$state.socmedActive }">
-                    <Icon :name="item.icon" size="24" />
-                </button>
-            </div> -->
         </div>
-        <slot></slot>
+
+        <!-- Layout -->
+        <div class="relative container-bg w-full h-max flex flex-col md:flex-row-reverse px-12 sm:px-24 py-8 sm:py-28">
+            <div class="w-full flex flex-col justify-start gap-5">
+                <MainNavList class="sticky top-10 " />
+                <section class="flex-grow border-4 border-black border-opacity-85 rounded-2xl p-4 bg-white">
+                    <slot></slot>
+                </section>
+                <footer class="border-4 border-black p-4 w-full rounded-2xl bg-white">
+                    <h5>Tes Footer here</h5>
+                </footer>
+            </div>
+
+            <!-- Profile -->
+            <section class="relative md:sticky top-16 w-full h-full md:basis-1/3 md:px-5">
+                <div class="fixed md:static bottom-0 left-0 w-full flex justify-center">
+                    <div
+                        class="w-[85vw]  bg-white md:w-full rounded-xl flex flex-col items-center border-4 border-black border-opacity-85 px-8">
+                        <div class="-translate-y-1/4 flex flex-row justify-between md:justify-center w-full items-end">
+                            <NuxtImg class="rounded-full w-[120px] h-[120px] md:w-[200px] md:h-[200px] object-cover "
+                                src="https://res.cloudinary.com/dcmya61ry/image/upload/f_auto,q_auto/cld-sample"
+                                alt="Profile Image"></NuxtImg>
+                            <div class="flex flex-row py-2 gap-3 md:hidden">
+                                <a href="/">
+                                    <NuxtImg src="images/icons/icons8-email-48.png" class="w-12" />
+                                </a>
+                                <a href="/">
+                                    <NuxtImg src="images/icons/icons8-linkedin-48.png" class="w-12"  />
+                                </a>
+                                <a href="/">
+                                    <NuxtImg src="images/icons/icons8-instagram-48.png" class="w-12" />
+                                </a>
+                                <a href="/">
+                                    <NuxtImg src="images/icons/icons8-github-48.png" class="w-12" />
+                                </a>
+                            </div>
+
+                        </div>
+                        <section class="-translate-y-4 md:-translate-y-8 flex flex-col h-full w-full justify-start md:justify-center items-start md:items-center">
+                            <h1 class="text-2xl md:text-2xl">Sumanto Hadikusumo</h1>
+                            <p class="text-base md:text-lg text-slate-700">Ini jabatan saya</p>
+                            <div class="md:flex flex-row py-2 gap-3 hidden">
+                                <a href="/">
+                                    <NuxtImg src="images/icons/icons8-email-48.png" />
+                                </a>
+                                <a href="/">
+                                    <NuxtImg src="images/icons/icons8-linkedin-48.png" />
+                                </a>
+                                <a href="/">
+                                    <NuxtImg src="images/icons/icons8-instagram-48.png" />
+                                </a>
+                                <a href="/">
+                                    <NuxtImg src="images/icons/icons8-github-48.png" />
+                                </a>
+                            </div>
+                            <div class="w-full bg-slate-50 h-full flex-grow rounded-2xl p-4 mt-2">
+                                <h1>tes</h1>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 </template>
 
@@ -118,4 +131,26 @@ watch(stateStore.$state, (newV, oldV) => {
 .fill-mode-forward {
     animation-fill-mode: forwards;
 }
+
+.container-bg {
+  background-color: yellow;
+  background-image: radial-gradient(#7D7D7D 1px, #fbfbfb 1px);
+  background-size: 30px 30px;
+  width: 100%;
+  height: max-content;
+}
+
+/* .container-bg {
+  --bg: radial-gradient(#000 5%, #0000 6%);
+  --size: 3rem;
+  width: 100%;
+  height: 100%;
+
+  pattern here
+  background-image: radial-gradient(#000 5%, #0000 6%),
+    radial-gradient(#000 5%, #0000 6%);
+  background-position: 0 0, calc(var(--size) / 2) calc(var(--size) / 2);
+  background-size: var(--size) var(--size);
+} */
+
 </style>

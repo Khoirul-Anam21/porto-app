@@ -1,0 +1,23 @@
+<template>
+    <section>
+        Experiences
+    </section>
+</template>
+
+<style scoped>
+.timeline-root {
+    @apply flex flex-col;
+}
+
+.timeline-body {
+    @apply flex space-x-4 mb-8;
+}
+
+.timeline-point {
+    @apply relative z-[2] mx-auto before:absolute before:left-1/2 before:top-12 before:hidden before:h-auto before:w-0 before:border-l-2 before:border-slate-200 before:-bottom-8 before:-z-[1] sm:before:block before:-translate-x-1/2 dark:before:border-slate-600;
+}
+
+.timeline-content {
+    @apply flex flex-col flex-1 gap-4;
+}
+</style>
