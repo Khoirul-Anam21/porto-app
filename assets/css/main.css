@@ -32,6 +32,12 @@
     }
 }
 
+@layer utilities {
+    .paused {
+      animation-play-state: paused;
+    }
+  }
+  
 @layer components {
     .primary-btn{
         @apply bg-dark-turquoise text-primary-light px-4 py-2 shadow-lg  dark:border dark:border-turquoise dark:bg-primary-dark dark:shadow-none

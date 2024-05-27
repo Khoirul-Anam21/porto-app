@@ -4,8 +4,11 @@
 </script>
 
 <template>
-  <section>
-    Projects
+  <section class="px-20 pt-14">
+    <MainBaseTimeline />
+    <MainBaseTimeline />
+    <MainBaseTimeline />
+    <MainBaseTimeline />
   </section>
 </template>
   

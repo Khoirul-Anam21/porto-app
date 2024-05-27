@@ -13,6 +13,14 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
+        'loop-scroll-up': {
+          from: { transform: 'translatey(0)' },
+          to: { transform: 'translatey(-100%)' },
+        },
+        'loop-scroll-down': {
+          from: { transform: 'translatey(-100%)' },
+          to: { transform: 'translatey(0)' },
+        },
         rotate: {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(180deg)' },
@@ -35,7 +43,9 @@ module.exports = {
       animation: {
         rotate: 'rotate 1s linear',
         rotateback: 'rotateback 1s linear',
-        horizontalBounce: 'horizontalBounce 1s ease-out infinite'
+        horizontalBounce: 'horizontalBounce 1s ease-out infinite',
+        'loop-scroll-up': 'loop-scroll-up 15s linear infinite',
+        'loop-scroll-down': 'loop-scroll-down 15s linear infinite',
       },
       colors: {
         'primary-dark': '#2C2D32',

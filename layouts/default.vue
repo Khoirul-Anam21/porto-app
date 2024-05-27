@@ -64,7 +64,7 @@ watch(stateStore.$state, (newV, oldV) => {
         <!-- Layout -->
         <div class="relative container-bg w-full h-max flex flex-col md:flex-row-reverse px-12 sm:px-24 py-8 sm:py-28">
             <div class="w-full flex flex-col justify-start gap-5">
-                <MainNavList class="sticky top-10 " />
+                <MainNavList class="sticky top-10 z-50" />
                 <section class="flex-grow border-4 border-black border-opacity-85 rounded-2xl p-4 bg-white">
                     <slot></slot>
                 </section>

@@ -1,21 +1,23 @@
+<script setup lang="ts">
+
+const props = defineProps<{
+    data: string[]
+}>()
+
+const emit = defineEmits(['updateCurrentOption'])
+
+onMounted(() => {
+    emit('updateCurrentOption', props.data[0]);
+})
+
+</script>
+
 <template>
-    <div class="wrapper">
-        <div class="option">
-            <input class="input" type="radio" name="btn" value="option1" :checked=false>
-            <div class="btn">
-                <span class="span">Option</span>
-            </div>
-        </div>
-        <div class="option">
-            <input class="input" type="radio" name="btn" value="option2">
-            <div class="btn">
-                <span class="span">Option</span>
-            </div>
-        </div>
-        <div class="option">
-            <input class="input" type="radio" name="btn" value="option3">
-            <div class="btn">
-                <span class="span">Option</span>
+    <div class="wrapper ">
+        <div v-for="(item, index) in props.data" :key="index" class="option ">
+            <input :key="index"  class="input" type="radio" name="btn" :value="item" @change="() => emit('updateCurrentOption', item)" :checked="index === 0">
+            <div class="btn" >
+                <span class="span">{{ item }}</span>
             </div>
         </div>
     </div>
