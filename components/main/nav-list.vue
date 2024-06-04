@@ -10,8 +10,8 @@ import { ref, onMounted, onUnmounted } from 'vue';
     <nav class="flex flex-row space-x-4">
       <MainBaseNavBtn name="About Me" route="/"/>
       <MainBaseNavBtn name="Projects" route="/projects"/>
-      <MainBaseNavBtn name="Experiences" route="/experiences"/>
-      <MainBaseNavBtn name="Educations & Skills" route="/educations" />
+      <MainBaseNavBtn name="Experiences & Skills" route="/experiences" />
+      <MainBaseNavBtn name="Educations" route="/educations"/>
     </nav>
   </header>
 </template>

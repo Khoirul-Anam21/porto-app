@@ -74,7 +74,7 @@ watch(stateStore.$state, (newV, oldV) => {
             </div>
 
             <!-- Profile -->
-            <section class="relative md:sticky top-16 w-full h-full md:basis-1/3 md:px-5">
+            <section class="relative md:sticky top-16 w-full h-full md:basis-1/3 md:px-5 z-50">
                 <div class="fixed md:static bottom-0 left-0 w-full flex justify-center">
                     <div
                         class="w-[85vw]  bg-white md:w-full rounded-xl flex flex-col items-center border-4 border-black border-opacity-85 px-8">

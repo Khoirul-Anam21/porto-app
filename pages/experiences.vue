@@ -1,65 +1,36 @@
+<script setup lang="ts">
+
+const openSocmedPage = (url: string) => {
+    window.open(url, '_blank');
+}
+
+</script>
 <template>
-    <section class="inline-flex gap-3">
-        <!-- <div class="w-max flex justify-center items-center">
-            <div class="w-max bg-red-100 gap-2 animate-loop-scroll flex">
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
+    <section class=" flex">
+        <div class="basis-2/3 py-8 md:py-11 lg:py-16">
+            <div class="flex items-center h-max pb-10">
+                <div class="relative  h-10 flex items-center mr-4">
+                    <div class="w-28 h-1 bg-slate-500"></div>
+                    <MainBaseRoundDecor class="absolute right-0 border-4 border-white scale-150" />
+                </div>
+                <h1 class="text-5xl">My Experiences</h1>
             </div>
-            <div class="w-max bg-red-100 gap-2 animate-loop-scroll flex" aria-hidden="true">
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-                <div class="w-8 h-8 bg-slate-400"></div>
-            </div>
-        </div> -->
-        <div class="flex flex-col overflow-hidden space-y-2 h-[500px] group">
-            <div class="flex flex-col w-min gap-2 animate-loop-scroll-up group-hover:paused">
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-
-            </div>
-            <div class="flex flex-col w-min gap-2 animate-loop-scroll-up group-hover:paused" aria-hidden="true">
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-                <MainBaseVerticalCard type="normal"/>
-
+            <div class="px-8 md:px-14 lg:px-24">
+                <MainBaseTimeline />
+                <MainBaseTimeline />
+                <MainBaseTimeline />
             </div>
         </div>
-        <div class="flex flex-col overflow-hidden space-y-2 h-[500px] group">
-            <div class="flex flex-col w-min gap-2 animate-loop-scroll-down group-hover:paused">
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
+        <div class="flex ">
+            <div>
+                <MainSkillsets />
             </div>
-            <div class="flex flex-col w-min gap-2 animate-loop-scroll-down group-hover:paused" aria-hidden="true">
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
-                <MainBaseVerticalCard type="reverse"/>
+            <div class="flex flex-col items-center mx-10">
+                <div class="relative flex flex-col items-center mb-4">
+                    <div class="h-28 w-1 bg-slate-500"></div>
+                    <MainBaseRoundDecor class="absolute bottom-0 border-4 border-white scale-150" />
+                </div>
+                <h1 class="text-5xl" :style="{ writingMode: 'vertical-rl' }">My Skills</h1>
             </div>
         </div>
     </section>

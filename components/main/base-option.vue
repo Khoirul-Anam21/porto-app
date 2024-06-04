@@ -17,7 +17,7 @@ onMounted(() => {
         <div v-for="(item, index) in props.data" :key="index" class="option ">
             <input :key="index"  class="input" type="radio" name="btn" :value="item" @change="() => emit('updateCurrentOption', item)" :checked="index === 0">
             <div class="btn" >
-                <span class="span">{{ item }}</span>
+                <span class="span px-4">{{ item }}</span>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@ onMounted(() => {
     --bg-color: #fff;
     --main-color: #323232;
     position: relative;
-    width: 250px;
+    width: 100%;
     height: 36px;
     background-color: var(--bg-color);
     border: 2px solid var(--main-color);
@@ -42,7 +42,7 @@ onMounted(() => {
 }
 
 .option {
-    width: 80.5px;
+    width: max-content;
     height: 28px;
     position: relative;
     top: 2px;
