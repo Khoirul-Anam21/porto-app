@@ -8,14 +8,14 @@ watch(system, (newv, old) => {
 
 const mode = computed(() => store.value === 'auto' ? system.value : store.value)
 
-
+const layout = 'blank';
 </script>
 
 
 <template>
     <div class="scroll-smooth">
-      <NuxtLayout>
-        <NuxtPage />
+      <NuxtLayout name="custom">
+        <NuxtPage />  
       </NuxtLayout>
     </div>
 </template>
