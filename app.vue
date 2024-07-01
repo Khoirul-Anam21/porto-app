@@ -12,6 +12,7 @@ const layout = 'blank';
 </script>
 
 
+
 <template>
     <div class="scroll-smooth">
       <NuxtLayout name="custom">
