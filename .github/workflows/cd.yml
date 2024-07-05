@@ -25,4 +25,8 @@ jobs:
             cd ~/home/project/porto/porto-app
             git pull origin main
             git status
-            sudo docker compose up --build -d
+            sudo npm install pm2@latest -g
+            sudo npm install -g pnpm
+            sudo pnpm i --production=false
+            sudo pnpm run build
+            sudo pm2 start .output/server/index.mjs --name "porto-app"
