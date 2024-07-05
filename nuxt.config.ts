@@ -1,19 +1,22 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ['~/assets/css/main.css', '@fortawesome/fontawesome-svg-core/styles.css'],
+  css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   typescript: {
     typeCheck: false
   },
-  
-  plugins: ["~/plugins/preline.client.ts"],
+
+  plugins: [],
   modules: ['@vueuse/nuxt',  'nuxt-icon', '@pinia/nuxt', 'nuxt-aos', "@nuxt/image",],
+
   aos: {
     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
     startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
@@ -23,5 +26,7 @@ export default defineNuxtConfig({
     disableMutationObserver: false, // disables automatic mutations' detections (advanced)
     debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
     throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-  }
+  },
+
+  compatibilityDate: '2024-07-05',
 })

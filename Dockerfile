@@ -21,7 +21,6 @@ RUN pnpm i --production=false
 COPY --link . .
 
 RUN pnpm run build
-RUN pnpm prune
 
 # Run
 FROM base
