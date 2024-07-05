@@ -11,7 +11,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (to.hash) {
       return {
         el: to.hash,
-        top: 30, 
+        top: 30,
         behavior: "smooth",
       };
     }
