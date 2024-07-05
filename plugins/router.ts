@@ -3,7 +3,6 @@ import { defineNuxtPlugin } from "#app";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const $router = nuxtApp.$router as any;
-
   $router.options.scrollBehavior = (
     to: any,
     from: any,
