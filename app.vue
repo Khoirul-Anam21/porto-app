@@ -6,9 +6,9 @@ watch(system, (newv, old) => {
   console.log(newv);
 });
 
-const mode = computed(() => store.value === 'auto' ? system.value : store.value)
+// const mode = computed(() => store.value === 'auto' ? system.value : store.value)
 
-const layout = 'blank';
+// const layout = 'blank';
 </script>
 
 

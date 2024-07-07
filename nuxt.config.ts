@@ -9,11 +9,9 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-
   typescript: {
     typeCheck: false
   },
-
   plugins: [],
   modules: ['@vueuse/nuxt',  'nuxt-icon', '@pinia/nuxt', 'nuxt-aos', "@nuxt/image",],
 
