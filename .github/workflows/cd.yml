@@ -25,4 +25,4 @@ jobs:
             cd ~/home/project/porto/porto-app
             git pull origin main
             git status
-            sudo docker compose up --build -d
+            sudo docker compose up -d
