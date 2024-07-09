@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
-  ssr: false,
+  // ssr: false,
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -14,7 +14,6 @@ export default defineNuxtConfig({
   },
   plugins: [],
   modules: ['@vueuse/nuxt',  'nuxt-icon', '@pinia/nuxt', 'nuxt-aos', "@nuxt/image",],
-
   aos: {
     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
     startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
