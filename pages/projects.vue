@@ -15,7 +15,6 @@ const dataNav = ["All", "Backend", "Frontend", "Fullstack "]
     <MainBaseOption :data="dataNav" class="my-4" />
   </section>
 </template>
-  
 
   
 <style scoped>
