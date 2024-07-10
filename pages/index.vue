@@ -11,7 +11,7 @@
                     <h1 class="py-4 text-3xl text-black">Coming Soon Hehe...</h1>
                     <MainWavyLoader />
                 </div>
-                <p class="text-xs italic text-gray-500">Web by Anam</p>
+                <p class="text-xs italic text-gray-500">Web by Anamm</p>
             </div>
         </MainBaseCard>
     </div>
