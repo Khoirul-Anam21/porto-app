@@ -15,7 +15,7 @@ watch(system, (newv, old) => {
 
 <template>
     <div class="scroll-smooth">
-      <NuxtLayout name="custom">
+      <NuxtLayout>
         <NuxtPage />  
       </NuxtLayout>
     </div>
