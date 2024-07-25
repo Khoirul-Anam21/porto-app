@@ -20,6 +20,8 @@ export interface MainContent {
     readonly project_desc:    string;
     readonly education_desc:  string;
     readonly experience_desc: string;
+    readonly specialties: Specialty[];
+    readonly languages: Language[];
 }
 
 export interface ProjectType {

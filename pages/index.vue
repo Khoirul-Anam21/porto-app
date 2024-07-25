@@ -1,29 +1,29 @@
 <script setup lang="ts">
-// import BaseBasicBtn from '~/components/main/base-basic-btn.vue';
+
+import { type MainContent } from '../stores/model-store';
+
+const { status, data, execute } = useLazyFetch("/api/main_content", { server: false });
+
+const content: Ref<MainContent | null> = computed(() => data.value ? {...JSON.parse(data.value)}: null);
+
+onMounted(() => {
+  execute();
+})
 
 
-// const currentOption: Ref<String | null> = ref('')
-
-// const changeOption = (newOpt: string) => {
-//   currentOption.value = newOpt
-// }
 
 </script>
 
 <template>
   <section class="scroll-smooth">
     <!-- <h1>{{ currentOption }} hei</h1> -->
-    <div id="main" class=" h-max flex flex-col justify-start gap-4 px-8 md:px-14 lg:px-24 py-8 md:py-11 lg:py-16 ">
+    <div v-if="status === 'success'" id="main" class=" h-max flex flex-col justify-start gap-4 px-8 md:px-14 lg:px-24 py-8 md:py-11 lg:py-16 ">
       <div>
         <div class="flex items-center gap-2 pb-4">
           <h1 class="text-5xl">About Me</h1>
           <MainBaseRoundDecor />
         </div>
-        <p class="text-lg">Amet amet sint amet dolore dolor deserunt excepteur dolor laboris laboris velit culpa sint.
-          Nulla in occaecat
-          aute minim in est ea minim. Dolore aliqua nisi ad eiusmod ipsum consequat sint sint cupidatat occaecat sit. Do
-          laborum minim nisi id. Adipisicing tempor voluptate laboris reprehenderit ad dolor aliquip. Labore non duis
-          velit quis eu nulla nisi quis.</p>
+        <p class="text-lg">{{ content?.about_desc }}</p>
       </div>
       <div class="mb-6">
         <h2 class="text-3xl pb-4">My Specialty</h2>
@@ -34,13 +34,8 @@
           <MainBaseCardPulsar color="orange" />
         </div>
       </div>
-      <!-- <div class="h-[800px] w-full bg-slate-100">
-        <iframe allow="camera; microphone; fullscreen; display-capture; autoplay"
-          src="https://meeting.rms.co.id/anam-meet" style="height: 100%; width: 100%; border: 0px;"></iframe>
-
-      </div> -->
       <div>
-        <h2 class="text-3xl pb-4">Languages</h2>
+        <h2 class="text-3xl pb-4">Languages {{ content?.languages }}</h2>
         <div class="space-y-5">
 
           <div class="flex ">
