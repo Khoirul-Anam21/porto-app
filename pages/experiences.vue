@@ -1,8 +1,18 @@
 <script setup lang="ts">
 
-const openSocmedPage = (url: string) => {
-    window.open(url, '_blank');
-}
+import { type Experience, type Skill } from '../stores/model-store';
+
+const { status: exStatus , data: exData, execute: exExecute } = useLazyFetch("/api/experiences", { server: false });
+const { status: skStatus, data: skData, execute: skExecute } = useLazyFetch("/api/skills", { server: false });
+
+const experiences: Ref<Experience[] | null> = computed(() => exData.value ? {...JSON.parse(exData.value)}: null);
+const skills: Ref<Skill[] | null> = computed(() => skData.value ? {...JSON.parse(skData.value)}: null);
+
+onMounted(() => {
+    exExecute();
+    skExecute();
+});
+
 
 </script>
 <template>
@@ -14,6 +24,7 @@ const openSocmedPage = (url: string) => {
                     <MainBaseRoundDecor class="absolute right-0 border-4 border-white scale-150" />
                 </div>
                 <h1 class="text-5xl">My Experiences</h1>
+                {{ experiences }}
             </div>
             <div class="px-8 md:px-14 lg:px-24">
                 <MainBaseTimeline />
@@ -31,6 +42,7 @@ const openSocmedPage = (url: string) => {
                     <MainBaseRoundDecor class="absolute bottom-0 border-4 border-white scale-150" />
                 </div>
                 <h1 class="text-5xl" :style="{ writingMode: 'vertical-rl' }">My Skills</h1>
+                {{ skills }}
             </div>
         </div>
     </section>

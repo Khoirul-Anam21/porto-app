@@ -4,9 +4,8 @@ export default defineEventHandler(async (event) => {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });
-        return {
-            data: result.data
-        }
+        return JSON.stringify(result.data);
+        
     } catch (err) {
         throw createError({
             message: "Failed to fetch data",

@@ -1,6 +1,16 @@
 <script setup lang="ts">
 
+import { type Education, type Project, type ProjectType } from '../stores/model-store';
+
+const { status, data, execute } = useLazyFetch("/api/projects", { server: false });
 const dataNav = ["All", "Backend", "Frontend", "Fullstack "]
+// const result: Ref<any | null> = computed(() => data.value ? { ...JSON.parse(data.value) } : null);
+
+const contents: Ref<Project[] | null> = computed(() => data.value ? { ...JSON.parse(data.value).projects } : null);
+const types: Ref<ProjectType | null> = computed(() => data.value ? { ...JSON.parse(data.value).types } : null);
+
+
+onMounted(() => execute());
 
 
 </script>
@@ -12,12 +22,14 @@ const dataNav = ["All", "Backend", "Frontend", "Fullstack "]
       <MainBaseRoundDecor />
     </div>
     <p class="text-lg">Deserunt ipsum consectetur sint sunt aute ipsum ad.</p>
+    {{ contents }}
+    <br>
+    {{ types }}
     <MainBaseOption :data="dataNav" class="my-4" />
   </section>
 </template>
 
-  
+
 <style scoped>
 /* Add your carousel styling here */
 </style>
-  
