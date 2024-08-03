@@ -1,5 +1,12 @@
+<script setup lang="ts">
+
+const props = defineProps<{
+    value: string
+}>()
+
+</script>
 <template>
-    <button class="comic-button px-6 py-1 text-xs">Category</button>
+    <span class="comic-button px-6 py-1 text-xs">{{ value }}</span>
 </template>
 
 <style scoped>

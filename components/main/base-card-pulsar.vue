@@ -1,15 +1,27 @@
 <script setup lang="ts">
 
-const style = {
-    "red": "absolute w-full h-full rounded-2xl translate-x-2 translate-y-2 bg-red-100",
-    "orange": "absolute w-full h-full rounded-2xl translate-x-2 translate-y-2 bg-orange-100",
-    "purple": "absolute w-full h-full rounded-2xl translate-x-2 translate-y-2 bg-purple-100",
-    "green": "absolute w-full h-full rounded-2xl translate-x-2 translate-y-2 bg-green-100"
-}
+const styles = ["absolute w-full h-full rounded-2xl translate-x-2 translate-y-2 bg-red-100",
+    "absolute w-full h-full rounded-2xl translate-x-2 translate-y-2 bg-orange-100",
+    "absolute w-full h-full rounded-2xl translate-x-2 translate-y-2 bg-purple-100",
+    "absolute w-full h-full rounded-2xl translate-x-2 translate-y-2 bg-green-100"
+];
+
+const textStyles = [' text-red-900', 'text-orange-900', 'text-purple-900', 'text-green-900'];
+
 
 const props = defineProps<{
-    color: keyof typeof style
-}>()
+    indexColor: number
+}>();
+
+
+
+const numIndex = computed(() => {
+    if (props.indexColor >= styles.length) {
+        return 0;
+    }
+    return props.indexColor;
+});
+
 
 
 
@@ -18,7 +30,10 @@ const props = defineProps<{
 <template>
     <div class="relative max-w-[400px] h-[200px]">
         <div class="absolute z-10 w-full h-full border-2 border-black rounded-2xl bg-none">
+            <slot :textStyle="textStyles[numIndex]"></slot>
         </div>
-        <div :class="style[props.color]"></div>
+        <div :class="styles[numIndex]">
+            
+        </div>
     </div>
 </template>

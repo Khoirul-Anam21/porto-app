@@ -34,7 +34,7 @@ onMounted(() => {
         </div>
         <div class="flex ">
             <div>
-                <MainSkillsets />
+                <MainSkillsets :skills="skills" />
             </div>
             <div class="flex flex-col items-center mx-10">
                 <div class="relative flex flex-col items-center mb-4">
@@ -42,7 +42,6 @@ onMounted(() => {
                     <MainBaseRoundDecor class="absolute bottom-0 border-4 border-white scale-150" />
                 </div>
                 <h1 class="text-5xl" :style="{ writingMode: 'vertical-rl' }">My Skills</h1>
-                {{ skills }}
             </div>
         </div>
     </section>

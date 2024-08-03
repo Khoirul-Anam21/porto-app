@@ -2,6 +2,11 @@
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   ssr: true,
+  routeRules: {
+    '/assets/**': {
+        proxy: { to: "https:admin.anam6.my.id/assets/**", },
+    }
+  },
   devtools: { enabled: true },
   postcss: {
     plugins: {
@@ -10,10 +15,14 @@ export default defineNuxtConfig({
     },
   },
   typescript: {
-    typeCheck: false
+    typeCheck: false,
   },
   plugins: [],
-  modules: ['@vueuse/nuxt',  'nuxt-icon', '@pinia/nuxt', "@nuxt/image"],
+  modules: ['@vueuse/nuxt', 'nuxt-icon', '@pinia/nuxt', "@nuxt/image", "nuxt-directus"],
+  
+  directus: { 
+    url: "https://admin.anam6.my.id/" 
+ },
   // aos: {
   //   disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
   //   startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on

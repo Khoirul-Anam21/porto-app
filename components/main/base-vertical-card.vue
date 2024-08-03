@@ -2,6 +2,8 @@
 
 defineProps<{
     type: string
+    title: string
+    iconStr: string
 }>();
 
 </script>
@@ -13,9 +15,9 @@ defineProps<{
             <div class="absolute w-full h-full bg-black rounded-lg translate-x-1 translate-y-1"></div>
             <div
                 class="absolute w-full h-full bg-red-200 border border-black rounded-lg flex items-center justify-center">
-                <div class="">A</div>
+                <Icon :name="iconStr" size="24px" class="text-black"/>
             </div>
         </div>
-        <p :style="{writingMode: 'vertical-rl'}">Hello Im here</p>
+        <p :style="{writingMode: 'vertical-rl'}" class="py-1">{{ title }}</p>
     </div>
 </template>

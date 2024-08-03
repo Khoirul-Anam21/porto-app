@@ -4,7 +4,6 @@ import { type Education, type Project, type ProjectType } from '../stores/model-
 
 const { status, data, execute } = useLazyFetch("/api/projects", { server: false });
 const dataNav = ["All", "Backend", "Frontend", "Fullstack "]
-// const result: Ref<any | null> = computed(() => data.value ? { ...JSON.parse(data.value) } : null);
 
 const contents: Ref<Project[] | null> = computed(() => data.value ? { ...JSON.parse(data.value).projects } : null);
 const types: Ref<ProjectType | null> = computed(() => data.value ? { ...JSON.parse(data.value).types } : null);

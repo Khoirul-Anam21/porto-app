@@ -24,6 +24,7 @@
     "add": "^2.0.6",
     "autoprefixer": "^10.4.15",
     "nuxt": "^3.7.1",
+    "nuxt-directus": "^5.6.1",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2",
