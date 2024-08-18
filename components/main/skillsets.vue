@@ -12,18 +12,18 @@ const props = defineProps<{
     <section class="inline-flex gap-8">
         <div class="flex flex-col overflow-hidden space-y-2 h-screen group">
             <div class="flex flex-col w-min gap-2 animate-loop-scroll-up group-hover:paused">
-                <MainBaseVerticalCard type="normal" v-for="(item, index) in skills" :key="index" :title="item.title" :icon-str="item.skill_icon_title" />
+                <BaseVerticalCard type="normal" v-for="(item, index) in skills" :key="index" :title="item.title" :icon-str="item.skill_icon_title" />
             </div>
             <div class="flex flex-col w-min gap-2 animate-loop-scroll-up group-hover:paused" aria-hidden="true">
-                <MainBaseVerticalCard type="normal" v-for="(item, index) in skills" :key="index" :title="item.title" :icon-str="item.skill_icon_title"  />
+                <BaseVerticalCard type="normal" v-for="(item, index) in skills" :key="index" :title="item.title" :icon-str="item.skill_icon_title"  />
             </div>
         </div>
         <div class="flex flex-col overflow-hidden space-y-2 h-screen group">
             <div class="flex flex-col w-min gap-2 animate-loop-scroll-down group-hover:paused">
-                <MainBaseVerticalCard type="reverse" v-for="(item, index) in skills" :key="index" :title="item.title" :icon-str="item.skill_icon_title"/>
+                <BaseVerticalCard type="reverse" v-for="(item, index) in skills" :key="index" :title="item.title" :icon-str="item.skill_icon_title"/>
             </div>
             <div class="flex flex-col w-min gap-2 animate-loop-scroll-down group-hover:paused" aria-hidden="true">
-                <MainBaseVerticalCard type="reverse" v-for="(item, index) in skills" :key="index" :title="item.title" :icon-str="item.skill_icon_title"/>
+                <BaseVerticalCard type="reverse" v-for="(item, index) in skills" :key="index" :title="item.title" :icon-str="item.skill_icon_title"/>
             </div>
         </div>
     </section>

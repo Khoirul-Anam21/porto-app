@@ -1,11 +1,8 @@
 <script setup lang="ts">
 
-// import { inject, type Ref, ref, watch } from 'vue'
 
 const props = defineProps<{
     itemId: number,
-    // contentHeader: any,
-    // contentBody: any
 }>()
 
 
@@ -29,10 +26,6 @@ const toggleCollapse = () => {
     console.log(activeItemId.value);
 
     isActive.value = !isActive.value
-    //   if (alwaysOpen.value) {
-    //     updateHeight()
-    //     return
-    //   }
 
     if (activeItemId.value !== props.itemId) {
         activeItemId.value = props.itemId;
@@ -71,9 +64,6 @@ const updateHeight = () => {
                 <slot></slot>
             </div>
         </div>
-        <!-- <span class="absolute rounded-xl translate-x-1 -translate-y-1 top-0 left-0 border-2 border-black w-full h-full bg-yellow scale-110">
-            
-        </span> -->
     </div>
 </template>
 

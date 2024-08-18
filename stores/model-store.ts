@@ -39,6 +39,7 @@ export interface Education {
     readonly date_updated: Date;
     readonly is_active:    boolean;
     readonly date_start:   Date;
+    readonly education_type:   string;
     readonly sequence:     number;
     readonly date_end:     Date | null;
     readonly gpa:          null | string;

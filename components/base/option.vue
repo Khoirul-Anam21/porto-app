@@ -1,13 +1,18 @@
 <script setup lang="ts">
 
+
+
 const props = defineProps<{
-    data: string[]
+    data: {
+        key: number
+        title: string
+    }[]
 }>()
 
 const emit = defineEmits(['updateCurrentOption'])
 
 onMounted(() => {
-    emit('updateCurrentOption', props.data[0]);
+    emit('updateCurrentOption', props.data[0].key);
 })
 
 </script>
@@ -15,11 +20,17 @@ onMounted(() => {
 <template>
     <div class="wrapper ">
         <div v-for="(item, index) in props.data" :key="index" class="option ">
-            <input :key="index"  class="input" type="radio" name="btn" :value="item" @change="() => emit('updateCurrentOption', item)" :checked="index === 0">
+            <input :key="index"  class="input" type="radio" name="btn" :value="item" @change="() => emit('updateCurrentOption', item.key)" :checked="index === 0">
             <div class="btn" >
-                <span class="span px-4">{{ item }}</span>
+                <span class="span px-4">{{ item.title }}</span>
             </div>
         </div>
+        <!-- <div>
+            <input class="input" type="radio" name="btn"  @change="() => emit('updateCurrentOption', 0)" >
+            <div class="btn" >
+                <span class="span px-4">{{ item.title }}</span>
+            </div>
+        </div> -->
     </div>
 
 </template>

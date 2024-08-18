@@ -26,7 +26,7 @@ onMounted(() => {
       <div>
         <div class="flex items-center gap-2 pb-4">
           <h1 class="text-5xl">About Me</h1>
-          <MainBaseRoundDecor />
+          <BaseRoundDecor />
         </div>
         <p class="text-lg">{{ content?.about_desc }}</p>
       </div>
@@ -35,7 +35,7 @@ onMounted(() => {
 
         <h2 class="text-3xl pb-4">My Specialties</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <MainBaseCardPulsar v-for="(item, index) in content?.specialties" :key="index" :index-color="index">
+          <BaseCardPulsar v-for="(item, index) in content?.specialties" :key="index" :index-color="index">
             <template v-slot="{textStyle}">
               <div class="w-full h-full flex justify-start p-6 gap-2">
                 <div class="w-[15%]">
@@ -47,7 +47,7 @@ onMounted(() => {
                 </div>
               </div>
             </template>
-          </MainBaseCardPulsar>
+          </BaseCardPulsar>
         </div>
       </div>
 
@@ -55,7 +55,7 @@ onMounted(() => {
       <div>
         <h2 class="text-3xl pb-4">Languages </h2>
         <div class="space-y-5">
-          <LazyMainBaseLanguage v-for="(item, index) in content?.languages" :key="index" :language="item" />
+          <LazyBaseLanguage v-for="(item, index) in content?.languages" :key="index" :language="item" />
         </div>
       </div>
     </div>
