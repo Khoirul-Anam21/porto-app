@@ -48,7 +48,7 @@ const updateHeight = () => {
 </script>
 
 <template>
-    <div class="relative bg-blue-100 rounded-2xl m-4">
+    <div class="relative  rounded-2xl m-4">
         <div class="w-full h-full card-container pl-4 py-4 pr-2 relative" :class="{ '-translate-x-2 -translate-y-2': isActive }">
             <button @click="toggleCollapse()" class="flex w-full justify-between items-center">
                 <slot name="header"></slot>
