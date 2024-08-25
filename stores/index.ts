@@ -5,7 +5,13 @@ export const useStateStore = defineStore('state', {
         // state: null as stateInterface | null,
         socmedActive: false,
         socmedIndex: 0,
-        timer: null as NodeJS.Timeout | null
+        timer: null as NodeJS.Timeout | null,
+        birthDate: new Date('2001-02-21'),
+        currentDate: new Date(),
+        address: 'Malang, East Java, Indonesia',
+        hobby: 'Reading Comics',
+        name: 'Mohammad Khoirul Anam',
+        jobPosition: 'Digital Effectiveness'
     }),
     actions: {
         activateSocmed() {

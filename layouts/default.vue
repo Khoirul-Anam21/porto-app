@@ -13,6 +13,11 @@ const toggleDarkTheme = () => {
     colorMode.value = 'light';
 };
 
+const age = computed(() => {
+    const rangeDate = new Date(stateStore.currentDate.valueOf() - stateStore.birthDate.valueOf());
+    const ageNum = rangeDate.getUTCFullYear() - 1970
+    return ageNum;
+})
 const goTo = (reference: string) => {
     const element = document.getElementById(reference);
     if (element) {
@@ -22,13 +27,12 @@ const goTo = (reference: string) => {
 
 const isDark = computed(() => colorMode.value === 'dark');
 
-const openSocmedPage = (url: string) => {
-    window.open(url, '_blank');
+const downloadCV = () => {
+    window.open('https://admin.anam6.my.id/assets/68cb4e60-4d57-49db-b431-9b1c6246dd57?download=', '_blank');
 }
 
 const { x, y } = useWindowScroll();
 
-const isScrolledEnough = computed(() => y.value > 200);
 
 watch(stateStore.$state, (newV, oldV) => {
     console.log(newV);
@@ -87,7 +91,7 @@ watch(stateStore.$state, (newV, oldV) => {
                                     <NuxtImg src="images/icons/icons8-email-48.png" class="w-12" />
                                 </a>
                                 <a href="/">
-                                    <NuxtImg src="images/icons/icons8-linkedin-48.png" class="w-12"  />
+                                    <NuxtImg src="images/icons/icons8-linkedin-48.png" class="w-12" />
                                 </a>
                                 <a href="/">
                                     <NuxtImg src="images/icons/icons8-instagram-48.png" class="w-12" />
@@ -98,26 +102,39 @@ watch(stateStore.$state, (newV, oldV) => {
                             </div>
 
                         </div>
-                        <section class="-translate-y-4 md:-translate-y-8 flex flex-col h-full w-full justify-start md:justify-center items-start md:items-center">
-                            <h1 class="text-2xl md:text-2xl">Sumanto Hadikusumo</h1>
-                            <p class="text-base md:text-lg text-slate-700">Ini jabatan saya</p>
+                        <section
+                            class="-translate-y-4 md:-translate-y-8 flex flex-col h-full w-full justify-start md:justify-center items-start md:items-center">
+                            <h1 class="text-2xl md:text-2xl text-center">{{ stateStore.name }}</h1>
+                            <p class="text-base md:text-base text-slate-700">- {{ stateStore.jobPosition }} -</p>
                             <div class="md:flex flex-row py-2 gap-3 hidden">
-                                <a href="/">
-                                    <NuxtImg src="images/icons/icons8-email-48.png" />
+                                <a href="/" class="w-[30px]">
+                                    <NuxtImg src="images/icons/icons8-whatsapp-48.png" />
                                 </a>
-                                <a href="/">
+                                <a href="/" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-linkedin-48.png" />
                                 </a>
-                                <a href="/">
+                                <a href="/" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-instagram-48.png" />
                                 </a>
-                                <a href="/">
+                                <a href="/" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-github-48.png" />
                                 </a>
                             </div>
                             <div class="w-full bg-slate-50 h-full flex-grow rounded-2xl p-4 mt-2">
-                                <h1>tes</h1>
+                                <div class="flex gap-3 items-center">
+                                    <Icon class="basis-1/5" name="ph:hand-heart-light" size="28px" />
+                                    <p class="text-sm basis-4/5 text-gray-600">{{ age + ' y.o' }}</p>
+                                </div>
+                                <div class="flex gap-3 items-center mt-3">
+                                    <Icon class="basis-1/5" name="system-uicons:location" size="28px" />
+                                    <p class="text-sm basis-4/5 text-gray-600">{{ stateStore.address }}</p>
+                                </div>
+                                <div class="flex gap-3 items-center mt-3">
+                                    <Icon class="basis-1/5" name="fluent:games-20-regular" size="30px" />
+                                    <p class="text-sm basis-4/5 text-gray-600">{{ stateStore.hobby     }}</p>
+                                </div>
                             </div>
+                            <BaseSmoothBtn @clicked="downloadCV" class="mt-4">Download CV</BaseSmoothBtn>
                         </section>
 
                     </div>
@@ -133,11 +150,11 @@ watch(stateStore.$state, (newV, oldV) => {
 }
 
 .container-bg {
-  background-color: yellow;
-  background-image: radial-gradient(#7D7D7D 1px, #fbfbfb 1px);
-  background-size: 30px 30px;
-  width: 100%;
-  height: max-content;
+    background-color: yellow;
+    background-image: radial-gradient(#7D7D7D 1px, #fbfbfb 1px);
+    background-size: 30px 30px;
+    width: 100%;
+    height: max-content;
 }
 
 /* .container-bg {
@@ -152,5 +169,4 @@ watch(stateStore.$state, (newV, oldV) => {
   background-position: 0 0, calc(var(--size) / 2) calc(var(--size) / 2);
   background-size: var(--size) var(--size);
 } */
-
 </style>
