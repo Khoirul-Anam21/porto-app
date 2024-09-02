@@ -6,7 +6,7 @@ const props = defineProps<{
 
 </script>
 <template>
-    <span class="comic-button px-6 py-1 text-xs">{{ value }}</span>
+    <span class="comic-button px-6 py-1 text-[8pt] sm:text-[10pt] md:text-xs">{{ value }}</span>
 </template>
 
 <style scoped>

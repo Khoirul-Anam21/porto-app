@@ -1,7 +1,9 @@
 <script setup lang="ts">
-// import { useColorMode } from '@vueuse/core'
-import { socmedData } from '@/composables/socmeds';
 import { useStateStore } from '@/stores/index';
+import { ref, onMounted } from 'vue';
+import { useWindowSize } from '@vueuse/core'
+
+const { width } = useWindowSize()
 
 const colorMode = useColorMode();
 const stateStore = useStateStore();
@@ -18,12 +20,6 @@ const age = computed(() => {
     const ageNum = rangeDate.getUTCFullYear() - 1970
     return ageNum;
 })
-const goTo = (reference: string) => {
-    const element = document.getElementById(reference);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-}
 
 const isDark = computed(() => colorMode.value === 'dark');
 
@@ -31,8 +27,27 @@ const downloadCV = () => {
     window.open('https://admin.anam6.my.id/assets/68cb4e60-4d57-49db-b431-9b1c6246dd57?download=', '_blank');
 }
 
-const { x, y } = useWindowScroll();
+const profileSheetOpen = ref(false);
+const profileSheetRef = ref();
+let profileSheetHeight = ref();
+let initProfileSheetHeight = ref();
 
+
+const openProfileSheet = () => {
+    if (width.value < 768) {
+        profileSheetOpen.value = !profileSheetOpen.value;
+        nextTick(updateHeight);
+    }
+    return;
+}
+
+const updateHeight = () => {
+    if (profileSheetOpen.value) {
+        profileSheetHeight.value = profileSheetRef.value.scrollHeight + 30
+    } else {
+        profileSheetHeight.value = initProfileSheetHeight.value;
+    }
+}
 
 watch(stateStore.$state, (newV, oldV) => {
     console.log(newV);
@@ -47,6 +62,11 @@ watch(stateStore.$state, (newV, oldV) => {
         stateStore.$state.socmedIndex++
     }, 1000);
 });
+
+onMounted(() => {
+    profileSheetHeight.value = profileSheetRef.value.scrollHeight;
+    initProfileSheetHeight.value = profileSheetRef.value.scrollHeight;
+})
 
 </script>
 
@@ -80,13 +100,18 @@ watch(stateStore.$state, (newV, oldV) => {
             <!-- Profile -->
             <section class="relative md:sticky top-16 w-full h-full md:basis-1/3 md:px-5 z-50">
                 <div class="fixed md:static bottom-0 left-0 w-full flex justify-center">
-                    <div
-                        class="w-[85vw]  bg-white md:w-full rounded-xl flex flex-col items-center border-4 border-black border-opacity-85 px-8">
+                    <div ref="profileSheetRef" :style="{ height: `${profileSheetHeight}px` }"
+                        class="w-[85vw] bg-white md:w-full relative rounded-xl flex flex-col items-center border-4 border-black border-opacity-85 px-8 transform-gpu transition-all ease-out duration-[600ms]">
+                        <div class="absolute px-4 py-2 bg-slate-100 cursor-pointer z-10 md:hidden"
+                            @click="openProfileSheet">
+                            <Icon name="mage:chevron-down" :class="{ 'rotate-180': profileSheetOpen }" size="1.5em"
+                                class="transform-gpu transition-all duration-500" />
+                        </div>
                         <div class="-translate-y-1/4 flex flex-row justify-between md:justify-center w-full items-end">
                             <NuxtImg class="rounded-full w-[120px] h-[120px] md:w-[200px] md:h-[200px] object-cover "
                                 src="https://res.cloudinary.com/dcmya61ry/image/upload/f_auto,q_auto/cld-sample"
                                 alt="Profile Image"></NuxtImg>
-                            <div class="flex flex-row py-2 gap-3 md:hidden">
+                            <div class="flex flex-row pt-4  gap-3 md:hidden">
                                 <a href="/">
                                     <NuxtImg src="images/icons/icons8-email-48.png" class="w-12" />
                                 </a>
@@ -105,7 +130,8 @@ watch(stateStore.$state, (newV, oldV) => {
                         <section
                             class="-translate-y-4 md:-translate-y-8 flex flex-col h-full w-full justify-start md:justify-center items-start md:items-center">
                             <h1 class="text-2xl md:text-2xl text-center">{{ stateStore.name }}</h1>
-                            <p class="text-base md:text-base text-slate-700">- {{ stateStore.jobPosition }} -</p>
+                            <p class="text-base md:text-base md:block hidden text-slate-700">- {{ stateStore.jobPosition
+                                }} -</p>
                             <div class="md:flex flex-row py-2 gap-3 hidden">
                                 <a href="/" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-whatsapp-48.png" />
@@ -120,7 +146,8 @@ watch(stateStore.$state, (newV, oldV) => {
                                     <NuxtImg src="images/icons/icons8-github-48.png" />
                                 </a>
                             </div>
-                            <div class="w-full bg-slate-50 h-full flex-grow rounded-2xl p-4 mt-2">
+                            <div class="w-full bg-slate-50 h-full flex-grow rounded-2xl p-4 mt-2 block"
+                                :class="{ 'hidden': !profileSheetOpen }">
                                 <div class="flex gap-3 items-center">
                                     <Icon class="basis-1/5" name="ph:hand-heart-light" size="28px" />
                                     <p class="text-sm basis-4/5 text-gray-600">{{ age + ' y.o' }}</p>
@@ -131,12 +158,13 @@ watch(stateStore.$state, (newV, oldV) => {
                                 </div>
                                 <div class="flex gap-3 items-center mt-3">
                                     <Icon class="basis-1/5" name="fluent:games-20-regular" size="30px" />
-                                    <p class="text-sm basis-4/5 text-gray-600">{{ stateStore.hobby     }}</p>
+                                    <p class="text-sm basis-4/5 text-gray-600">{{ stateStore.hobby }}</p>
                                 </div>
                             </div>
-                            <BaseSmoothBtn @clicked="downloadCV" class="mt-4">Download CV</BaseSmoothBtn>
+                            <div class="hidden">
+                                <BaseSmoothBtn @clicked="downloadCV" class="mt-4">Download CV</BaseSmoothBtn>
+                            </div>
                         </section>
-
                     </div>
                 </div>
             </section>

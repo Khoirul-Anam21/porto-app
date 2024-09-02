@@ -28,7 +28,7 @@ onMounted(() => {
           <h1 class="text-5xl">About Me</h1>
           <BaseRoundDecor />
         </div>
-        <p class="text-lg">{{ content?.about_desc }}</p>
+        <p class="md:text-lg text-sm">{{ content?.about_desc }}</p>
       </div>
       <div class="mb-6">
 
@@ -50,8 +50,6 @@ onMounted(() => {
           </BaseCardPulsar>
         </div>
       </div>
-
-
       <div>
         <h2 class="text-3xl pb-4">Languages </h2>
         <div class="space-y-5">
@@ -59,6 +57,5 @@ onMounted(() => {
         </div>
       </div>
     </div>
-
   </section>
 </template>
