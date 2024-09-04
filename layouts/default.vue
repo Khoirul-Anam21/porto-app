@@ -86,9 +86,11 @@ onMounted(() => {
         </div>
 
         <!-- Layout -->
-        <div class="relative container-bg w-full h-max flex flex-col md:flex-row-reverse px-12 sm:px-24 py-8 sm:py-28">
+        <div class="relative container-bg w-full h-max flex flex-col md:flex-row-reverse px-5 sm:px-24 py-8 sm:py-28">
             <div class="w-full flex flex-col justify-start gap-5">
-                <MainNavList class="sticky top-10 z-50" />
+                <section class="sticky top-10 z-50">
+                    <MainNavList class="" />
+                </section>
                 <section class="flex-grow border-4 border-black border-opacity-85 rounded-2xl p-4 bg-white">
                     <slot></slot>
                 </section>
@@ -102,7 +104,7 @@ onMounted(() => {
                 <div class="fixed md:static bottom-0 left-0 w-full flex justify-center">
                     <div ref="profileSheetRef" :style="{ height: `${profileSheetHeight}px` }"
                         class="w-[85vw] bg-white md:w-full relative rounded-xl flex flex-col items-center border-4 border-black border-opacity-85 px-8 transform-gpu transition-all ease-out duration-[600ms]">
-                        <div class="absolute px-4 py-2 bg-slate-100 cursor-pointer z-10 md:hidden"
+                        <div class="absolute right-4 sm:right-auto px-4 py-2 bg-slate-100 cursor-pointer z-10 md:hidden"
                             @click="openProfileSheet">
                             <Icon name="mage:chevron-down" :class="{ 'rotate-180': profileSheetOpen }" size="1.5em"
                                 class="transform-gpu transition-all duration-500" />
@@ -129,8 +131,8 @@ onMounted(() => {
                         </div>
                         <section
                             class="-translate-y-4 md:-translate-y-8 flex flex-col h-full w-full justify-start md:justify-center items-start md:items-center">
-                            <h1 class="text-2xl md:text-2xl text-center">{{ stateStore.name }}</h1>
-                            <p class="text-base md:text-base md:block hidden text-slate-700">- {{ stateStore.jobPosition
+                            <h1 class="text-xl sm:text-2xl text-center">{{ stateStore.name }}</h1>
+                            <p v-show="profileSheetOpen || width > 768" class="text-base md:text-base text-slate-700 text-center sm:text-start w-full">- {{ stateStore.jobPosition
                                 }} -</p>
                             <div class="md:flex flex-row py-2 gap-3 hidden">
                                 <a href="/" class="w-[30px]">
@@ -146,8 +148,7 @@ onMounted(() => {
                                     <NuxtImg src="images/icons/icons8-github-48.png" />
                                 </a>
                             </div>
-                            <div class="w-full bg-slate-50 h-full flex-grow rounded-2xl p-4 mt-2 block"
-                                :class="{ 'hidden': !profileSheetOpen }">
+                            <div v-show="profileSheetOpen || width > 768" class="w-full bg-slate-50 h-full flex-grow rounded-2xl p-4 mt-2 block">
                                 <div class="flex gap-3 items-center">
                                     <Icon class="basis-1/5" name="ph:hand-heart-light" size="28px" />
                                     <p class="text-sm basis-4/5 text-gray-600">{{ age + ' y.o' }}</p>

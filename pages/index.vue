@@ -34,8 +34,8 @@ onMounted(() => {
 
 
         <h2 class="text-3xl pb-4">My Specialties</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <BaseCardPulsar v-for="(item, index) in content?.specialties" :key="index" :index-color="index">
+        <div class="flex flex-wrap gap-4 w-full bg-slate-200">
+          <BaseCardPulsar v-for="(item, index) in content?.specialties" :key="index" :index-color="index" class="w-full">
             <template v-slot="{textStyle}">
               <div class="w-full h-full flex justify-start p-6 gap-2">
                 <div class="w-[15%]">
@@ -43,7 +43,7 @@ onMounted(() => {
                 </div>
                 <div :class="textStyle" class="space-y-1">
                   <h3 class="text-xl font-bold">{{ item.title }}</h3>
-                  <p>{{ item.description }}</p>
+                  <p class="text-sm" >{{ item.description }}</p>
                 </div>
               </div>
             </template>

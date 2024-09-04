@@ -16,12 +16,12 @@ onMounted(() => execute());
 </script>
 
 <template>
-  <section class="px-20 pt-14">
+  <section class="px-1 sm:px-10 md:px-20 pt-2 sm:pt-8 md:pt-14">
     <div class="flex gap-2 items-center pb-2">
-      <h1 class="text-5xl">My Projects</h1>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl">My Projects</h1>
       <BaseRoundDecor />
     </div>
-    <p class="text-lg">Deserunt ipsum consectetur sint sunt aute ipsum ad.</p>
+    <p class="text-base md:text-lg">Deserunt ipsum consectetur sint sunt aute ipsum ad.</p>
     <br>
     <MainProjectList v-if="status === 'success'" :projects="contents" :project-types="types" />
   </section>

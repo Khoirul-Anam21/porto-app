@@ -18,10 +18,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="wrapper ">
+    <div class="wrapper scroll-container overflow-hidden relative">
         <div v-for="(item, index) in props.data" :key="index" class="option ">
-            <input :key="index"  class="input" type="radio" name="btn" :value="item" @change="() => emit('updateCurrentOption', item.key)" :checked="index === 0">
-            <div class="btn" >
+            <input :key="index" class="input" type="radio" name="btn" :value="item"
+                @change="() => emit('updateCurrentOption', item.key)" :checked="index === 0">
+            <div class="btn">
                 <span class="span px-4">{{ item.title }}</span>
             </div>
         </div>
@@ -36,6 +37,32 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.scroll-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    cursor: grab;
+    user-select: none;
+}
+
+.grid-wrapper {
+    display: flex;
+    /* Allow items to flow horizontally */
+    touch-action: pan-left pan-right;
+    /* Allow drag for touchscreens */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
 .wrapper {
     --font-color-dark: #323232;
     --font-color-light: #FFF;

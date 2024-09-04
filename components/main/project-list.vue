@@ -50,14 +50,14 @@ onMounted(() => {
         <BaseAccordion>
             <BaseAccordionItem v-for="(item, index) in projectData" :key="index" :item-id="index" class="bg-yellow-100">
                 <template #header>
-                    <section class="flex gap-4 items-center px-2">
-                        <div class=" w-[60px]">
+                    <section class="flex gap-4 items-start px-2">
+                        <div class=" w-[60px] py-1">
                             <NuxtImg
                                 :src="`https://admin.anam6.my.id/assets/${getIconFromProjectType(item.project_type)}`" />
                         </div>
-                        <div class="py-2 text-start">
-                            <h5 class="text-2xl">{{ item.title }}</h5>
-                            <p>{{item.short_desc}}</p>
+                        <div class="py-1 sm:py-2 text-start">
+                            <h5 class="font-bold sm:text-lg md:font-normal md:text-2xl">{{ item.title }}</h5>
+                            <p class="text-sm sm:text-base" >{{item.short_desc}}</p>
                         </div>
                     </section>
                 </template>

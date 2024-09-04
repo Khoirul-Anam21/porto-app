@@ -28,7 +28,7 @@ const numIndex = computed(() => {
 </script>
 
 <template>
-    <div class="relative max-w-[400px] h-[200px]">
+    <div class="relative md:w-[48%] w-full md:max-w-[400px] h-max min-h-[250px] ">
         <div class="absolute z-10 w-full h-full border-2 border-black rounded-2xl bg-none">
             <slot :textStyle="textStyles[numIndex]"></slot>
         </div>

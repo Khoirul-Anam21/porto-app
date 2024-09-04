@@ -48,7 +48,7 @@ const updateHeight = () => {
 </script>
 
 <template>
-    <div class="relative  rounded-2xl m-4">
+    <div class="relative rounded-2xl my-4">
         <div class="w-full h-full card-container pl-4 py-4 pr-2 relative" :class="{ '-translate-x-2 -translate-y-2': isActive }">
             <button @click="toggleCollapse()" class="flex w-full justify-between items-center">
                 <slot name="header"></slot>
@@ -59,7 +59,7 @@ const updateHeight = () => {
             </button>
             <div ref="contentRef" :style="{
                 height: `${height}px`
-            }" class="transform-gpu overflow-hidden border-slate-300 px-4 transition-all duration-200 "
+            }" class="transform-gpu overflow-hidden border-slate-300 px-2 transition-all duration-200 "
                 :class="{ 'p-2': isActive }">
                 <slot></slot>
             </div>
