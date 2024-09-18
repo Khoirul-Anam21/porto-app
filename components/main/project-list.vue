@@ -46,7 +46,8 @@ onMounted(() => {
 
 <template>
     <section>
-        <BaseOption :data="[allCategoryForNav, ...dataNav]" class="my-4" @update-current-option="updateOption" />
+        <span class="text-[8pt] md:hidden" >Swipe >></span>
+        <BaseOption :data="[allCategoryForNav, ...dataNav]" class="mb-4" @update-current-option="updateOption" />
         <BaseAccordion>
             <BaseAccordionItem v-for="(item, index) in projectData" :key="index" :item-id="index" class="bg-yellow-100">
                 <template #header>

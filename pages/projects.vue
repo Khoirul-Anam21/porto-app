@@ -21,8 +21,9 @@ onMounted(() => execute());
       <h1 class="text-3xl sm:text-4xl md:text-5xl">My Projects</h1>
       <BaseRoundDecor />
     </div>
-    <p class="text-base md:text-lg">Deserunt ipsum consectetur sint sunt aute ipsum ad.</p>
-    <br>
+    <MainWavyLoader v-if="status !== 'success'" />
+    <p v-if="status === 'success'" class="text-base md:text-lg">Deserunt ipsum consectetur sint sunt aute ipsum ad.</p>
+    <br class="hidden md:block" >
     <MainProjectList v-if="status === 'success'" :projects="contents" :project-types="types" />
   </section>
 </template>

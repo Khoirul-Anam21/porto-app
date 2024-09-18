@@ -21,41 +21,45 @@ onMounted(() => {
 <template>
   <section class="scroll-smooth">
     <!-- <h1>{{ currentOption }} hei</h1> -->
-    <div v-if="status === 'success'" id="main"
-      class=" h-max flex flex-col justify-start gap-4 px-8 md:px-14 lg:px-24 py-8 md:py-11 lg:py-16 ">
+    <div id="main" class=" h-max flex flex-col justify-start gap-4 px-8 md:px-14 lg:px-24 py-8 md:py-11 lg:py-16 ">
       <div>
         <div class="flex items-center gap-2 pb-4">
           <h1 class="text-5xl">About Me</h1>
           <BaseRoundDecor />
         </div>
-        <p class="md:text-lg text-sm">{{ content?.about_desc }}</p>
+        <MainWavyLoader v-if="status !== 'success'" />
+
+        <p v-if="status === 'success'" class="md:text-lg text-sm">{{ content?.about_desc }}</p>
       </div>
       <div class="mb-6">
 
 
-        <h2 class="text-3xl pb-4">My Specialties</h2>
-        <div class="flex flex-wrap gap-4 w-full bg-slate-200">
-          <BaseCardPulsar v-for="(item, index) in content?.specialties" :key="index" :index-color="index" class="w-full">
-            <template v-slot="{textStyle}">
+        <h2 v-if="status === 'success'" class="text-3xl pb-4">My Specialties</h2>
+        <div v-if="status === 'success'" class="flex flex-wrap gap-4 w-full ">
+          <BaseCardPulsar v-for="(item, index) in content?.specialties" :key="index" :index-color="index"
+            class="w-full">
+            <template v-slot="{ textStyle }">
               <div class="w-full h-full flex justify-start p-6 gap-2">
                 <div class="w-[15%]">
                   <NuxtImg :src="`https://admin.anam6.my.id/assets/${item.flaticon_icon}`"></NuxtImg>
                 </div>
                 <div :class="textStyle" class="space-y-1">
                   <h3 class="text-xl font-bold">{{ item.title }}</h3>
-                  <p class="text-sm" >{{ item.description }}</p>
+                  <p class="text-sm">{{ item.description }}</p>
                 </div>
               </div>
             </template>
           </BaseCardPulsar>
         </div>
       </div>
-      <div>
+      <div v-if="status === 'success'">
         <h2 class="text-3xl pb-4">Languages </h2>
         <div class="space-y-5">
           <LazyBaseLanguage v-for="(item, index) in content?.languages" :key="index" :language="item" />
         </div>
       </div>
     </div>
+
+
   </section>
 </template>

@@ -68,6 +68,7 @@ onMounted(() => {
     initProfileSheetHeight.value = profileSheetRef.value.scrollHeight;
 })
 
+
 </script>
 
 <template>
@@ -87,15 +88,15 @@ onMounted(() => {
 
         <!-- Layout -->
         <div class="relative container-bg w-full h-max flex flex-col md:flex-row-reverse px-5 sm:px-24 py-8 sm:py-28">
-            <div class="w-full flex flex-col justify-start gap-5">
+            <div class="w-full flex flex-col justify-start gap-5" :style="{ margin: `0 0 ${width < 768? profileSheetHeight: 0 }px 0` }">
                 <section class="sticky top-10 z-50">
                     <MainNavList class="" />
                 </section>
                 <section class="flex-grow border-4 border-black border-opacity-85 rounded-2xl p-4 bg-white">
                     <slot></slot>
                 </section>
-                <footer class="border-4 border-black p-4 w-full rounded-2xl bg-white">
-                    <h5>Tes Footer here</h5>
+                <footer class="border-4 border-black p-4 flex items-center justify-center w-full rounded-2xl bg-blue-100 transition-all duration-200" >
+                    <p class="text-xs md:text-sm italic text-gray-600" >“Today is a Gift, That’s Why It’s Called the Present”</p>
                 </footer>
             </div>
 
