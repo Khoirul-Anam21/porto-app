@@ -39,13 +39,13 @@ onMounted(() => {
           <BaseCardPulsar v-for="(item, index) in content?.specialties" :key="index" :index-color="index"
             class="w-full">
             <template v-slot="{ textStyle }">
-              <div class="w-full h-full flex justify-start p-6 gap-2">
-                <div class="w-[15%]">
+              <div  class="w-full flex flex-col justify-start p-6 gap-2">
+                <div class="w-[30%] md:w-[80%]">
                   <NuxtImg :src="`https://admin.anam6.my.id/assets/${item.flaticon_icon}`"></NuxtImg>
                 </div>
                 <div :class="textStyle" class="space-y-1">
                   <h3 class="text-xl font-bold">{{ item.title }}</h3>
-                  <p class="text-sm">{{ item.description }}</p>
+                  <p class="text-sm">{{ item.description }} </p>
                 </div>
               </div>
             </template>

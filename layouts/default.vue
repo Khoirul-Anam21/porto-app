@@ -128,7 +128,6 @@ onMounted(() => {
                                     <NuxtImg src="images/icons/icons8-github-48.png" class="w-12" />
                                 </a>
                             </div>
-
                         </div>
                         <section
                             class="-translate-y-4 md:-translate-y-8 flex flex-col h-full w-full justify-start md:justify-center items-start md:items-center">
@@ -163,7 +162,7 @@ onMounted(() => {
                                     <p class="text-sm basis-4/5 text-gray-600">{{ stateStore.hobby }}</p>
                                 </div>
                             </div>
-                            <div class="hidden">
+                            <div v-show="profileSheetOpen || width > 768">
                                 <BaseSmoothBtn @clicked="downloadCV" class="mt-4">Download CV</BaseSmoothBtn>
                             </div>
                         </section>
