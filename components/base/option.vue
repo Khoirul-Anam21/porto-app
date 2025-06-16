@@ -5,7 +5,7 @@
 const props = defineProps<{
     data: {
         key: number
-        title: string
+        name: string
     }[]
 }>()
 
@@ -23,7 +23,7 @@ onMounted(() => {
             <input :key="index" class="input" type="radio" name="btn" :value="item"
                 @change="() => emit('updateCurrentOption', item.key)" :checked="index === 0">
             <div class="btn">
-                <span class="span px-4">{{ item.title }}</span>
+                <span class="span px-4">{{ item.name }}</span>
             </div>
         </div>
         <!-- <div>

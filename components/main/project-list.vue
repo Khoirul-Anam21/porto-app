@@ -11,12 +11,12 @@ const tabIndex = ref<number | null>(null);
 
 const allCategoryForNav = {
     key: 0,
-    title: "All",
+    name: "All",
 }
 
 const dataNav = computed(() => props.projectTypes.map((projectType: ProjectType) => ({
     key: projectType.id,
-    title: projectType.title,
+    name: projectType.name,
 })))
 
 const projectData = computed(() => {
@@ -27,7 +27,7 @@ const projectData = computed(() => {
         return props.projects;
     }
 
-    return props.projects.filter((project: Project) => project.project_type === tabIndex.value)
+    return props.projects.filter((project: Project) => project.type === tabIndex.value)
 })
 
 const getIconFromProjectType = (typeId: number) => {
@@ -53,8 +53,8 @@ onMounted(() => {
                 <template #header>
                     <section class="flex gap-4 items-start px-2">
                         <div class=" w-[60px] py-1">
-                            <NuxtImg
-                                :src="`https://admin.anam6.my.id/assets/${getIconFromProjectType(item.project_type)}`" />
+                            <!-- <NuxtImg
+                                :src="`https://admin.anam6.my.id/assets/${getIconFromProjectType(item.project_type)}`" /> -->
                         </div>
                         <div class="py-1 sm:py-2 text-start">
                             <h5 class="font-bold sm:text-lg md:font-normal md:text-2xl">{{ item.title }}</h5>

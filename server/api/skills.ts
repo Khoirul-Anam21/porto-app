@@ -1,6 +1,9 @@
 export default defineEventHandler(async (event) => {
     try {
-        const result: any = await $fetch(`https://admin.anam6.my.id/items/skills`, {
+        const config = useRuntimeConfig()
+        // console.log(config.public.apiBase);
+
+        const result: any = await $fetch(`${config.public.apiBase}/items/skills`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });

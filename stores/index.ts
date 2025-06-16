@@ -11,7 +11,7 @@ export const useStateStore = defineStore('state', {
         address: 'Malang, East Java, Indonesia',
         hobby: 'Reading Comics',
         name: 'Mohammad Khoirul Anam',
-        jobPosition: 'Digital Effectiveness'
+        jobPosition: 'Digital Effectiveness',
     }),
     actions: {
         activateSocmed() {
