@@ -67,7 +67,7 @@ export interface Specialty {
     readonly date_created: Date;
     readonly description: string;
     readonly date_updated: Date;
-    readonly flaticon_icon: string;
+    readonly icon: string;
 }
 
 export interface Experience {
@@ -78,10 +78,21 @@ export interface Experience {
     readonly is_active: boolean;
     readonly date_updated: Date;
     readonly position: string;
-    readonly detail: ExperienceDetail[] | null;
     readonly date_start: Date;
     readonly date_end: Date | null;
-    readonly types: string;
+    readonly job_type: number;
+    readonly job_detail: string;
+}
+
+export interface ExperienceType {
+  readonly id: number
+  readonly sort: any
+  readonly user_updated: any
+  readonly date_updated: any
+  readonly user_created: string
+  readonly name: string
+  readonly status: string
+  readonly date_created: string
 }
 
 export interface ExperienceDetail {

@@ -21,7 +21,7 @@ export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', 'nuxt-icon', '@pinia/nuxt', "@nuxt/image", "nuxt-directus"],
   
   directus: { 
-    url: "https://admin.anam6.my.id/" 
+    url: process.env.API_BASE || "http://localhost:8055"
  },
   // aos: {
   //   disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function

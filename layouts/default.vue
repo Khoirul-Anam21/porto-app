@@ -88,15 +88,18 @@ onMounted(() => {
 
         <!-- Layout -->
         <div class="relative container-bg w-full h-max flex flex-col md:flex-row-reverse px-5 sm:px-24 py-8 sm:py-28">
-            <div class="w-full flex flex-col justify-start gap-5" :style="{ margin: `0 0 ${width < 768? profileSheetHeight: 0 }px 0` }">
+            <div class="w-full flex flex-col justify-start gap-5"
+                :style="{ margin: `0 0 ${width < 768 ? profileSheetHeight : 0}px 0` }">
                 <section class="sticky top-10 z-50">
                     <MainNavList class="" />
                 </section>
                 <section class="flex-grow border-4 border-black border-opacity-85 rounded-2xl p-4 bg-white">
                     <slot></slot>
                 </section>
-                <footer class="border-4 border-black p-4 flex items-center justify-center w-full rounded-2xl bg-blue-100 transition-all duration-200" >
-                    <p class="text-xs md:text-sm italic text-gray-600" >“Today is a Gift, That’s Why It’s Called the Present”</p>
+                <footer
+                    class="border-4 border-black p-4 flex items-center justify-center w-full rounded-2xl bg-blue-100 transition-all duration-200">
+                    <p class="text-xs md:text-sm italic text-gray-600">“Today is a Gift, That’s Why It’s Called the
+                        Present”</p>
                 </footer>
             </div>
 
@@ -131,9 +134,13 @@ onMounted(() => {
                         </div>
                         <section
                             class="-translate-y-4 md:-translate-y-8 flex flex-col h-full w-full justify-start md:justify-center items-start md:items-center">
-                            <h1 class="text-xl sm:text-2xl text-center">{{ stateStore.name }}</h1>
-                            <p v-show="profileSheetOpen || width > 768" class="text-base md:text-base text-slate-700 text-center sm:text-start w-full">- {{ stateStore.jobPosition
-                                }} -</p>
+                            <div class="flex flex-col items-center md:items-center w-full">
+                                <h1 class="text-xl sm:text-2xl text-center">{{ stateStore.name }}</h1>
+                                <p v-show="profileSheetOpen || width > 768"
+                                    class="text-base md:text-base text-slate-700 text-center sm:text-center w-full">- {{
+                                        stateStore.jobPosition
+                                    }} -</p>
+                            </div>
                             <div class="md:flex flex-row py-2 gap-3 hidden">
                                 <a href="/" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-whatsapp-48.png" />
@@ -148,7 +155,8 @@ onMounted(() => {
                                     <NuxtImg src="images/icons/icons8-github-48.png" />
                                 </a>
                             </div>
-                            <div v-show="profileSheetOpen || width > 768" class="w-full bg-slate-50 h-full flex-grow rounded-2xl p-4 mt-2 block">
+                            <div v-show="profileSheetOpen || width > 768"
+                                class="w-full bg-slate-50 h-full flex-grow rounded-2xl p-4 mt-2 block">
                                 <div class="flex gap-3 items-center">
                                     <Icon class="basis-1/5" name="ph:hand-heart-light" size="28px" />
                                     <p class="text-sm basis-4/5 text-gray-600">{{ age + ' y.o' }}</p>

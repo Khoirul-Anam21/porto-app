@@ -6,6 +6,8 @@ const props = defineProps<{
     iconStr: string
 }>();
 
+const config = useRuntimeConfig()
+
 </script>
 
 <template>
@@ -14,7 +16,8 @@ const props = defineProps<{
         <div class="w-11 h-11 relative">
             <div class="absolute w-full h-full bg-black rounded-lg translate-x-1 translate-y-1"></div>
             <div
-                class="absolute w-full h-full bg-red-200 border border-black rounded-lg flex items-center justify-center">
+                class="absolute w-full h-full bg-red-200 border border-black rounded-lg flex p-1 items-center justify-center">
+                <img :src="`${config.public.apiBase}/assets/${props.iconStr}`" alt="" srcset="">
                 <!-- <Icon :name="props.iconStr" size="24px" class="text-black rotate-90 md:rotate-0"/> -->
             </div>
         </div>

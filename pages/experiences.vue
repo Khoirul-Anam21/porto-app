@@ -1,17 +1,23 @@
 <script setup lang="ts">
 
-import { type Experience, type Skill } from '../stores/model-store';
+import { type Experience, type Skill, type ExperienceType } from '../stores/model-store';
 
 const { status: exStatus, data: exData, execute: exExecute } = useLazyFetch("/api/experiences", { server: false });
 const { status: skStatus, data: skData, execute: skExecute } = useLazyFetch("/api/skills", { server: false });
 
-const experiences: Ref<Experience[] | null> = computed(() => exData.value ? [...JSON.parse(exData.value)] : null);
+const experiences: Ref<Experience[] | null> = computed(() => exData.value ? [...JSON.parse(exData.value).experiences] : null);
+const experience_types: Ref<ExperienceType[] | null> = computed(() => exData.value ? [...JSON.parse(exData.value).types] : null);
 const skills: Ref<Skill[] | null> = computed(() => skData.value ? [...JSON.parse(skData.value)] : null);
 
 onMounted(() => {
     exExecute();
     skExecute();
 });
+
+// get experience types by id
+const getExperienceTypeById = (id: number) => {
+    return experience_types.value?.find(type => type.id === id);
+}
 
 
 </script>
@@ -28,7 +34,7 @@ onMounted(() => {
             <MainWavyLoader v-if="exStatus !== 'success'" />
 
             <div v-if="exStatus === 'success'" class="md:px-14 lg:px-22">
-                <ExperienceTimeline v-for="(item, index) in experiences" :key="index" :experience="item" />
+                <ExperienceTimeline v-for="(item, index) in experiences" :key="index" :experience="item" :experience_type="getExperienceTypeById(item.id)" />
             </div>
         </div>
         <div class="flex flex-col-reverse md:flex-row  overflow-hidden">

@@ -8,8 +8,6 @@ const contents: Ref<Project[] | null> = computed(() => data.value ?  [...JSON.pa
 const types: Ref<ProjectType[] | null> = computed(() => data.value ?  [...JSON.parse(data.value).types]  : null);
 
 
-
-
 onMounted(() => execute());
 
 

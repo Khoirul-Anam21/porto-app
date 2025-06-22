@@ -12,8 +12,7 @@ onMounted(() => {
 })
 
 
-
-
+const config = useRuntimeConfig()
 
 
 </script>
@@ -41,7 +40,7 @@ onMounted(() => {
             <template v-slot="{ textStyle }">
               <div  class="w-full flex flex-col justify-start p-6 gap-2">
                 <div class="w-[30%] md:w-[80%]">
-                  <NuxtImg :src="`https://admin.anam6.my.id/assets/${item.flaticon_icon}`"></NuxtImg>
+                  <NuxtImg :src="`${config.public.apiBase}/assets/${item.icon}`"></NuxtImg>
                 </div>
                 <div :class="textStyle" class="space-y-1">
                   <h3 class="text-xl font-bold">{{ item.title }}</h3>

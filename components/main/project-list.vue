@@ -42,6 +42,8 @@ onMounted(() => {
 
 })
 
+const config = useRuntimeConfig()
+
 </script>
 
 <template>
@@ -53,8 +55,8 @@ onMounted(() => {
                 <template #header>
                     <section class="flex gap-4 items-start px-2">
                         <div class=" w-[60px] py-1">
-                            <!-- <NuxtImg
-                                :src="`https://admin.anam6.my.id/assets/${getIconFromProjectType(item.project_type)}`" /> -->
+                            <NuxtImg
+                                :src="`${config.public.apiBase}/assets/${getIconFromProjectType(item.type)}`" />
                         </div>
                         <div class="py-1 sm:py-2 text-start">
                             <h5 class="font-bold sm:text-lg md:font-normal md:text-2xl">{{ item.title }}</h5>

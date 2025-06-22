@@ -7,19 +7,21 @@ const props = defineProps<{
     education: Education
 }>()
 
+const config = useRuntimeConfig()
+
 </script>
 
 <template>
-    <BaseTimeline class="h-full max-h-[240px] md:h-[230px]">
+    <BaseTimeline class="h-full max-h-[240px] md:h-[210px]">
         <div class="py-6 px-4 space-y-3">
             <section class="flex gap-2 md:gap-4">
-                <div class="flex justify-center items-start md:items-center basis-[25%] md:basis-[12%]">
-                    <NuxtImg src="https://admin.anam6.my.id/assets/4b9f5961-2e07-4961-b0a6-1392ab422234"
-                        class="w-full" />
+                <div class="flex justify-center items-start md:items-center  basis-[25%] md:basis-[12%]">
+                    <NuxtImg :src="`${config.public.apiBase}/assets/eba4f0dd-0e95-48f4-84c2-f5b52812bbbf`"
+                        class="w-[80%]" />
                 </div>
                 <div class="flex-grow">
                     <p class="text-sm md:text-base" >{{ props.education.institution }}</p>
-                    <h4 class="text-xl font-bold md:font-normal md:text-2xl">{{ props.education.major }}</h4>
+                    <h4 class="text-xl font-bold md:font-normal md:text-4xl">{{ props.education.major }}</h4>
                 </div>
             </section>
             <section class="inline-flex flex-col md:flex-row gap-2 md:gap-4 md:items-center">
