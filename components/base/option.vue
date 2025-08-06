@@ -19,7 +19,7 @@ onMounted(() => {
 
 <template>
     <div class="wrapper scroll-container overflow-hidden relative whitespace-nowrap no-scrollbar">
-        <div v-for="(item, index) in props.data" :key="index" class="option ">
+        <div v-for="(item, index) in props.data"  data-aos="fade-left" data-aos-duration="500" :data-aos-delay="index * 100" :key="index" class="option ">
             <input :key="index" class="input" type="radio" name="btn" :value="item"
                 @change="() => emit('updateCurrentOption', item.key)" :checked="index === 0">
             <div class="btn">

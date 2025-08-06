@@ -20,7 +20,7 @@ onMounted(() => execute());
       <BaseRoundDecor />
     </div>
     <MainWavyLoader v-if="status !== 'success'" />
-    <p v-if="status === 'success'" class="text-base md:text-lg">Deserunt ipsum consectetur sint sunt aute ipsum ad.</p>
+    <p data-aos="fade-up" data-aos-duration="700" v-if="status === 'success'" class="text-base md:text-lg">Deserunt ipsum consectetur sint sunt aute ipsum ad.</p>
     <br class="hidden md:block" >
     <MainProjectList v-if="status === 'success'" :projects="contents" :project-types="types" />
   </section>

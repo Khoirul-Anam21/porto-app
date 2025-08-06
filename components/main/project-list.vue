@@ -51,9 +51,9 @@ const config = useRuntimeConfig()
         <span class="text-[8pt] md:hidden" >Swipe >></span>
         <BaseOption :data="[allCategoryForNav, ...dataNav]" class="mb-4" @update-current-option="updateOption" />
         <BaseAccordion>
-            <BaseAccordionItem v-for="(item, index) in projectData" :key="index" :item-id="index" class="bg-yellow-100">
+            <BaseAccordionItem v-for="(item, index) in projectData"  data-aos="fade-left" data-aos-duration="500"  :data-aos-delay="index * 200" :key="index" :item-id="index" class="bg-yellow-100">
                 <template #header>
-                    <section class="flex gap-4 items-start px-2">
+                    <section class="flex gap-4 items-start px-2 bread sticky">
                         <div class=" w-[60px] py-1">
                             <NuxtImg
                                 :src="`${config.public.apiBase}/assets/${getIconFromProjectType(item.type)}`" />
@@ -65,8 +65,7 @@ const config = useRuntimeConfig()
                     </section>
                 </template>
                 <template #default>
-                    <div v-html="item.detail">
-                        
+                    <div v-html="item.detail" class="prose prose-slate prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:my-0 prose-img:rounded-lg  prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
                     </div>
                 </template>
             </BaseAccordionItem>

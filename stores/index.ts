@@ -9,9 +9,14 @@ export const useStateStore = defineStore('state', {
         birthDate: new Date('2001-02-21'),
         currentDate: new Date(),
         address: 'Malang, East Java, Indonesia',
-        hobby: 'Reading Comics',
+        hobby: 'Reading Comics & Photography',
         name: 'Mohammad Khoirul Anam',
-        jobPosition: 'Digital Effectiveness',
+        jobPosition: 'Digital Effectiveness & Web Developer',
+        whatsapp_url: 'https://wa.me/6287894524561',
+        github_url: 'https://github.com/Khoirul-Anam21',
+        instagram_url: 'https://www.instagram.com/mohkhoirul_a?igsh=YTFhZXBzMHNiczh2',
+        linkedin_url: 'https://www.linkedin.com/in/mohammad-khoirul-anam21/',
+
     }),
     actions: {
         activateSocmed() {

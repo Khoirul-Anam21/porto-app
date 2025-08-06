@@ -82,6 +82,7 @@ export interface Experience {
     readonly date_end: Date | null;
     readonly job_type: number;
     readonly job_detail: string;
+    readonly sequence: number;
 }
 
 export interface ExperienceType {

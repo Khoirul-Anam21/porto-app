@@ -24,7 +24,7 @@ const age = computed(() => {
 const isDark = computed(() => colorMode.value === 'dark');
 
 const downloadCV = () => {
-    window.open('https://admin.anam6.my.id/assets/68cb4e60-4d57-49db-b431-9b1c6246dd57?download=', '_blank');
+    window.open('https://docs.google.com/document/d/1B09vjlvs6BRPIiXFsgUlOEos6JMNCoZjHxe3PVf8WVA/edit?usp=sharing', '_blank');
 }
 
 const profileSheetOpen = ref(false);
@@ -74,7 +74,7 @@ onMounted(() => {
 <template>
     <div>
         <!-- Dark mode toggle -->
-        <div class="fixed w-full z-50 top-1/3 right-0 bg-slate-400">
+        <!-- <div class="fixed w-full z-50 top-1/3 right-0 bg-slate-400">
             <div @click="toggleDarkTheme"
                 class="absolute top-1/2 left-0 w-24 h-24 rounded-full -translate-x-1/2 flex items-center justify-center side-btn shadow-lg cursor-pointer">
                 <div class="flex justify-between w-full p-3"
@@ -84,7 +84,7 @@ onMounted(() => {
                     <Icon name="material-symbols:light-mode-outline" size="28" />
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Layout -->
         <div class="relative container-bg w-full h-max flex flex-col md:flex-row-reverse px-5 sm:px-24 py-8 sm:py-28">
@@ -115,7 +115,7 @@ onMounted(() => {
                         </div>
                         <div class="-translate-y-1/4 flex flex-row justify-between md:justify-center w-full items-end">
                             <NuxtImg class="rounded-full w-[120px] h-[120px] md:w-[200px] md:h-[200px] object-cover "
-                                src="https://res.cloudinary.com/dcmya61ry/image/upload/f_auto,q_auto/cld-sample"
+                                src="https://res.cloudinary.com/dj8gvk6wr/image/upload/v1753718118/IMG_20250728_211241_oofgyx.jpg"
                                 alt="Profile Image"></NuxtImg>
                             <div class="flex flex-row pt-4  gap-3 md:hidden">
                                 <a href="/">
@@ -142,16 +142,16 @@ onMounted(() => {
                                     }} -</p>
                             </div>
                             <div class="md:flex flex-row py-2 gap-3 hidden">
-                                <a href="/" class="w-[30px]">
+                                <a :href="stateStore.whatsapp_url" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-whatsapp-48.png" />
                                 </a>
-                                <a href="/" class="w-[30px]">
+                                <a :href="stateStore.linkedin_url" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-linkedin-48.png" />
                                 </a>
-                                <a href="/" class="w-[30px]">
+                                <a :href="stateStore.instagram_url" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-instagram-48.png" />
                                 </a>
-                                <a href="/" class="w-[30px]">
+                                <a :href="stateStore.github_url" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-github-48.png" />
                                 </a>
                             </div>

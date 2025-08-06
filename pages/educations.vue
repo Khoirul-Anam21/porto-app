@@ -4,7 +4,7 @@ import { type Education } from '../stores/model-store';
 
 const { status, data, execute } = useLazyFetch("/api/educations", { server: false });
 
-const educations: Ref<Education[] | null> = computed(() => data.value ? { ...JSON.parse(data.value) } : null);
+const educations: Ref<Education[] | null> = computed(() => data.value ? [ ...JSON.parse(data.value) ] : null);
 
 onMounted(() => execute());
 </script>
@@ -15,13 +15,19 @@ onMounted(() => execute());
             <h1 :style="{ writingMode: 'vertical-rl' }" class="rotate-180 text-6xl hidden md:block">My Educations</h1>
         </div>
         <div class="flex-grow w-full h-auto">
-            <div class="flex items-center gap-2 flex-wrap w-full h-auto" >
+            <div class="flex items-center gap-2 flex-wrap w-full h-auto">
                 <h1 class="text-3xl block md:hidden">My Educations</h1>
                 <BaseRoundDecor class="my-2" />
             </div>
             <MainWavyLoader v-if="status !== 'success'" />
-            <p v-if="status === 'success'" class="text-sm md:text-lg pt-2">Adipisicing quis reprehenderit aute aute qui consequat.</p>
-            <EducationTimeline v-if="status === 'success'" v-for="(item, index) in educations" :key="index" :education="item" />
+            <p v-if="status === 'success'" data-aos="fade-up" data-aos-duration="600" class="text-sm md:text-lg pt-2">Adipisicing quis reprehenderit aute aute qui
+                consequat.</p>
+            <div v-if="status === 'success'">
+                <EducationTimeline 
+                    v-for="(item, index) in educations?.sort((a, b) => b.sequence - a.sequence)" :key="index"
+                    :education="item" />
+
+            </div>
         </div>
     </section>
 </template>

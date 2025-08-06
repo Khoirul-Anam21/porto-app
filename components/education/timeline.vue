@@ -2,17 +2,19 @@
 
 import { type Education } from '../../stores/model-store';
 import formatDate from '../../composables/useFormatDate';
+import { getCurrentInstance } from "vue";
 
 const props = defineProps<{
     education: Education
 }>()
 
 const config = useRuntimeConfig()
+const key = getCurrentInstance()?.vnode.key
 
 </script>
 
 <template>
-    <BaseTimeline class="h-full max-h-[240px] md:h-[210px]">
+    <BaseTimeline class="h-full max-h-[240px] md:h-[210px]" :key-index="key as number">
         <div class="py-6 px-4 space-y-3">
             <section class="flex gap-2 md:gap-4">
                 <div class="flex justify-center items-start md:items-center  basis-[25%] md:basis-[12%]">

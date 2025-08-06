@@ -32,9 +32,8 @@ const getExperienceTypeById = (id: number) => {
                 <h1 class="text-5xl">My Experiences</h1>
             </div>
             <MainWavyLoader v-if="exStatus !== 'success'" />
-
             <div v-if="exStatus === 'success'" class="md:px-14 lg:px-22">
-                <ExperienceTimeline v-for="(item, index) in experiences" :key="index" :experience="item" :experience_type="getExperienceTypeById(item.id)" />
+                <ExperienceTimeline v-for="(item, index) in experiences?.sort((a, b) => b.sequence - a.sequence)"  :key="index" :experience="item" :experience_type="getExperienceTypeById(item.job_type)" />
             </div>
         </div>
         <div class="flex flex-col-reverse md:flex-row  overflow-hidden">
