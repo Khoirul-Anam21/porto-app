@@ -1,0 +1,26 @@
+<script setup lang="ts">
+
+const props = defineProps<{
+    type: string
+    title: string
+    iconStr: string
+}>();
+
+const config = useRuntimeConfig()
+
+</script>
+
+<template>
+    <div :class="{'flex-col-reverse': props.type === 'reverse', 'flex-col': props.type === 'normal'}"
+        class=" bg-yellow-100 border-black border gap-2 pt-1 pb-2 pl-1 pr-2 rounded-xl inline-flex items-center whitespace-nowrap h-max">
+        <div class="w-11 h-11 relative">
+            <div class="absolute w-full h-full bg-black rounded-lg translate-x-1 translate-y-1"></div>
+            <div
+                class="absolute w-full h-full bg-red-200 border border-black rounded-lg flex p-1 items-center justify-center">
+                <img :src="`${config.public.apiBase}/assets/${props.iconStr}`" alt="" srcset="">
+                <!-- <Icon :name="props.iconStr" size="24px" class="text-black rotate-90 md:rotate-0"/> -->
+            </div>
+        </div>
+        <p :style="{writingMode: 'vertical-rl'}" class="py-1">{{ props.title }}</p>
+    </div>
+</template>
