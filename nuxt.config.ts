@@ -34,7 +34,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiBase: process.env.API_BASE || 'http://localhost:8055',
+      apiBase: process.env.API_BASE || "https://cms.itsanam.my.id",
     }
   },
   compatibilityDate: '2024-07-05',
