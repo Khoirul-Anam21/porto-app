@@ -20,8 +20,7 @@ onMounted(() => execute());
                 <BaseRoundDecor class="my-2" />
             </div>
             <MainWavyLoader v-if="status !== 'success'" />
-            <p v-if="status === 'success'" data-aos="fade-up" data-aos-duration="600" class="text-sm md:text-lg pt-2">Adipisicing quis reprehenderit aute aute qui
-                consequat.</p>
+            <p v-if="status === 'success'" data-aos="fade-up" data-aos-duration="600" class="text-sm md:text-lg pt-2">Education is the key to unlock our potential</p>
             <div v-if="status === 'success'">
                 <EducationTimeline 
                     v-for="(item, index) in educations?.sort((a, b) => b.sequence - a.sequence)" :key="index"
