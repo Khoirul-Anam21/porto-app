@@ -17,7 +17,7 @@ const config = useRuntimeConfig()
             <div class="absolute w-full h-full bg-black rounded-lg translate-x-1 translate-y-1"></div>
             <div
                 class="absolute w-full h-full bg-red-200 border border-black rounded-lg flex p-1 items-center justify-center">
-                <img :src="`${config.public.apiBase}/assets/${props.iconStr}`" alt="" srcset="">
+                <NuxtImg :src="`${config.public.apiBase}/assets/${props.iconStr}`" alt="" srcset=""/>
                 <!-- <Icon :name="props.iconStr" size="24px" class="text-black rotate-90 md:rotate-0"/> -->
             </div>
         </div>
