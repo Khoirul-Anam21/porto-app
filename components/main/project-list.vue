@@ -66,7 +66,6 @@ const config = useRuntimeConfig()
                 <template #default>
                     <div>
                         <p class="text-sm sm:text-base">{{ item.description }}</p>
-                            <p class="text-sm sm:text-base">{{ item.description }}</p>
                         <hr v-if="item.detail"/>
                         <div v-html="item.detail"
                             class="prose prose-slate prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:my-0 prose-img:rounded-lg  prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
