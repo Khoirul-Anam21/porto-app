@@ -118,17 +118,17 @@ onMounted(() => {
                                 src="https://res.cloudinary.com/dj8gvk6wr/image/upload/v1753718118/IMG_20250728_211241_oofgyx.jpg"
                                 alt="Profile Image"></NuxtImg>
                             <div class="flex flex-row pt-4  gap-3 md:hidden">
-                                <a href="/">
+                                <a :href="stateStore.whatsapp_url" class="w-[30px]">
+                                    <NuxtImg src="images/icons/icons8-whatsapp-48.png" />
+                                </a>
+                                <a :href="stateStore.linkedin_url" class="w-[30px]">
+                                    <NuxtImg src="images/icons/icons8-linkedin-48.png" />
+                                </a>
+                                <a :href="stateStore.email_url" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-email-48.png" class="w-12" />
                                 </a>
-                                <a href="/">
-                                    <NuxtImg src="images/icons/icons8-linkedin-48.png" class="w-12" />
-                                </a>
-                                <a href="/">
-                                    <NuxtImg src="images/icons/icons8-instagram-48.png" class="w-12" />
-                                </a>
-                                <a href="/">
-                                    <NuxtImg src="images/icons/icons8-github-48.png" class="w-12" />
+                                <a :href="stateStore.github_url" class="w-[30px]">
+                                    <NuxtImg src="images/icons/icons8-github-48.png" />
                                 </a>
                             </div>
                         </div>
@@ -148,8 +148,8 @@ onMounted(() => {
                                 <a :href="stateStore.linkedin_url" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-linkedin-48.png" />
                                 </a>
-                                <a :href="stateStore.instagram_url" class="w-[30px]">
-                                    <NuxtImg src="images/icons/icons8-instagram-48.png" />
+                                <a :href="stateStore.email_url" class="w-[30px]">
+                                    <NuxtImg src="images/icons/icons8-email-48.png" />
                                 </a>
                                 <a :href="stateStore.github_url" class="w-[30px]">
                                     <NuxtImg src="images/icons/icons8-github-48.png" />

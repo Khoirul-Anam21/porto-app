@@ -13,6 +13,7 @@ export const useStateStore = defineStore('state', {
         name: 'Mohammad Khoirul Anam',
         jobPosition: 'Digital Effectiveness & Web Developer',
         whatsapp_url: 'https://wa.me/6287894524561',
+        email_url: 'mailto:khairulanamstud@gmail.com',
         github_url: 'https://github.com/Khoirul-Anam21',
         instagram_url: 'https://www.instagram.com/mohkhoirul_a?igsh=YTFhZXBzMHNiczh2',
         linkedin_url: 'https://www.linkedin.com/in/mohammad-khoirul-anam21/',
