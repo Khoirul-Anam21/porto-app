@@ -48,24 +48,29 @@ const config = useRuntimeConfig()
 
 <template>
     <section>
-        <span class="text-[8pt] md:hidden" >Swipe >></span>
+        <span class="text-[8pt] md:hidden">Swipe >></span>
         <BaseOption :data="[allCategoryForNav, ...dataNav]" class="mb-4" @update-current-option="updateOption" />
         <BaseAccordion>
-            <BaseAccordionItem v-for="(item, index) in projectData"  data-aos="fade-left" data-aos-duration="500"  :data-aos-delay="index * 200" :key="index" :item-id="index" class="bg-yellow-100">
+            <BaseAccordionItem v-for="(item, index) in projectData" data-aos="fade-left" data-aos-duration="500"
+                :data-aos-delay="index * 200" :key="index" :item-id="index" class="bg-yellow-100">
                 <template #header>
                     <section class="flex gap-4 items-start px-2 bread sticky">
                         <div class=" w-[60px] py-1">
-                            <NuxtImg
-                                :src="`${config.public.apiBase}/assets/${getIconFromProjectType(item.type)}`" />
+                            <NuxtImg :src="`${config.public.apiBase}/assets/${getIconFromProjectType(item.type)}`" />
                         </div>
                         <div class="py-1 sm:py-2 text-start">
                             <h5 class="font-bold sm:text-lg md:font-normal md:text-2xl">{{ item.title }}</h5>
-                            <p class="text-sm sm:text-base" >{{item.short_desc}}</p>
                         </div>
                     </section>
                 </template>
                 <template #default>
-                    <div v-html="item.detail" class="prose prose-slate prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:my-0 prose-img:rounded-lg  prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
+                    <div>
+                        <p class="text-sm sm:text-base">{{ item.description }}</p>
+                            <p class="text-sm sm:text-base">{{ item.description }}</p>
+                        <hr v-if="item.detail"/>
+                        <div v-html="item.detail"
+                            class="prose prose-slate prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:my-0 prose-img:rounded-lg  prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
+                        </div>
                     </div>
                 </template>
             </BaseAccordionItem>
