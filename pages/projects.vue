@@ -1,23 +1,32 @@
 <script setup lang="ts">
 
-const dataNav = ["All", "Backend", "Frontend", "Fullstack "]
+import { type Education, type Project, type ProjectType } from '../stores/model-store';
+
+const { status, data, execute } = useLazyFetch("/api/projects", { server: false });
+
+const contents: Ref<Project[] | null> = computed(() => data.value ?  [...JSON.parse(data.value).projects]  : null);
+const types: Ref<ProjectType[] | null> = computed(() => data.value ?  [...JSON.parse(data.value).types]  : null);
+
+
+onMounted(() => execute());
 
 
 </script>
 
 <template>
-  <section class="px-20 pt-14">
+  <section class="px-1 sm:px-10 md:px-20 pt-2 sm:pt-8 md:pt-14">
     <div class="flex gap-2 items-center pb-2">
-      <h1 class="text-5xl">My Projects</h1>
-      <MainBaseRoundDecor />
+      <h1 class="text-3xl sm:text-4xl md:text-5xl">My Projects</h1>
+      <BaseRoundDecor />
     </div>
-    <p class="text-lg">Deserunt ipsum consectetur sint sunt aute ipsum ad.</p>
-    <MainBaseOption :data="dataNav" class="my-4" />
+    <MainWavyLoader v-if="status !== 'success'" />
+    <p data-aos="fade-up" data-aos-duration="700" v-if="status === 'success'" class="text-base md:text-lg">Every task is a chance to learn and grow</p>
+    <br class="hidden md:block" >
+    <MainProjectList v-if="status === 'success'" :projects="contents" :project-types="types" />
   </section>
 </template>
 
-  
+
 <style scoped>
 /* Add your carousel styling here */
 </style>
-  

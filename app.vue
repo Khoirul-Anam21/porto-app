@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import { Analytics } from '@vercel/analytics/nuxt';
 const { system, store } = useColorMode()
 
 watch(system, (newv, old) => {
@@ -15,7 +15,8 @@ watch(system, (newv, old) => {
 
 <template>
     <div class="scroll-smooth">
-      <NuxtLayout name="custom">
+      <NuxtLayout>
+        <Analytics />
         <NuxtPage />  
       </NuxtLayout>
     </div>

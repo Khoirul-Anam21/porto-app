@@ -1,20 +1,25 @@
+<script setup lang="ts">
+defineEmits(['clicked'])
+
+</script>
+
 <template>
-    <button class="comic-button">Click me!</button>
+    <button @click="$emit('clicked')" class="comic-button"><slot></slot></button>
 </template>
 
 <style scoped>
 .comic-button {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 24px;
-    font-weight: bold;
+    padding: 5px 20px;
+    font-size: 15px;
+    /* font-weight: bold; */
     text-align: center;
     text-decoration: none;
-    color: #fff;
-    background-color: #ff5252;
+    color: #3f0000;
+    background-color: #fecece;
     border: 2px solid #000;
     border-radius: 10px;
-    box-shadow: 5px 5px 0px #000;
+    box-shadow: 3px 3px 0px #000;
     transition: all 0.3s ease;
     cursor: pointer;
 }

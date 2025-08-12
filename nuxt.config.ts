@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
+  ssr: false,
+  routeRules: {
+    '/assets/**': {
+      proxy: { to: "https:admin.anam6.my.id/assets/**", },
+    }
+  },
   devtools: { enabled: true },
   postcss: {
     plugins: {
@@ -9,10 +15,13 @@ export default defineNuxtConfig({
     },
   },
   typescript: {
-    typeCheck: false
+    typeCheck: false,
   },
   plugins: [],
-  modules: ['@vueuse/nuxt',  'nuxt-icon', '@pinia/nuxt', 'nuxt-aos', "@nuxt/image",],
+  modules: ['@vueuse/nuxt', 'nuxt-icon', '@pinia/nuxt', "@nuxt/image", "nuxt-directus", "nuxt-aos"],
+  directus: {
+    url: process.env.API_BASE || "http://localhost:8055"
+  },
   aos: {
     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
     startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
@@ -23,6 +32,10 @@ export default defineNuxtConfig({
     debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
     throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
   },
-
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE || "https://cms.itsanam.my.id",
+    }
+  },
   compatibilityDate: '2024-07-05',
 })

@@ -26,7 +26,7 @@ const openLink = (url: string) => {
 <template>
   <div
     class="p-4 bg-light-turquoise dark:bg-primary-dark dark:border-2 dark:border-turquoise space-y-4 w-[360px] rounded-xl">
-    <img :src="project.thumbnail" alt="Project Thumbnail" class="w-[300px] cursor-pointer" />
+    <NuxtImg :src="project.thumbnail" alt="Project Thumbnail" class="w-[300px] cursor-pointer" />
     <div class="">
       <h3 class="text-2xl font-bold hover:underline cursor-pointer" @click="openLink(project.link)">{{ project.title }}</h3>
       <p class="whitespace-pre-wrap">{{ project.description }}</p>
