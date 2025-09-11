@@ -43,8 +43,8 @@ module.exports = {
         rotate: 'rotate 1s linear',
         rotateback: 'rotateback 1s linear',
         horizontalBounce: 'horizontalBounce 1s ease-out infinite',
-        'loop-scroll-up': 'loop-scroll-up 20s linear infinite',
-        'loop-scroll-down': 'loop-scroll-down 20s linear infinite',
+        'loop-scroll-up': 'loop-scroll-up 60s linear infinite',
+        'loop-scroll-down': 'loop-scroll-down 60s linear infinite',
       },
       colors: {
         'primary-dark': '#2C2D32',
