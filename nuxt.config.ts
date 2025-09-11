@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     typeCheck: false,
   },
   plugins: [],
-  modules: ['@vueuse/nuxt', 'nuxt-icon', '@pinia/nuxt', "@nuxt/image", "nuxt-directus", "nuxt-aos"],
+  modules: ['@vueuse/nuxt', 'nuxt-icon', '@pinia/nuxt', "@nuxt/image", "nuxt-directus", "nuxt-aos", 'nuxt-easy-lightbox'],
   directus: {
     url: process.env.API_BASE || "http://localhost:8055"
   },

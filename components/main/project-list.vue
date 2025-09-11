@@ -5,7 +5,15 @@ import { onMounted } from 'vue';
 const props = defineProps<{
     projects: Project[]
     projectTypes: ProjectType[]
-}>()
+}>();
+
+const imagesRef = ref<string[]>([]);
+const imagesIndexRef = ref<number | null>(null);
+const visibleRef = ref(false);
+const onHide = () => {
+    visibleRef.value = false
+    document.body.classList.remove('no-scroll')
+};
 
 const tabIndex = ref<number | null>(null);
 
@@ -18,6 +26,8 @@ const dataNav = computed(() => props.projectTypes.map((projectType: ProjectType)
     key: projectType.id,
     name: projectType.name,
 })))
+
+
 
 const projectData = computed(() => {
     if (tabIndex.value === null) {
@@ -37,6 +47,20 @@ const getIconFromProjectType = (typeId: number) => {
 const updateOption = (key: number) => {
     tabIndex.value = key
 }
+
+
+const selectImages = (images: string[], index: number) => {
+    imagesRef.value = images;
+    imagesIndexRef.value = index;
+    visibleRef.value = true;
+    document.body.classList.add('no-scroll')
+}
+
+// const showImg = (index: number) => {
+//     imagesIndexRef.value = index;
+//     visibleRef.value = true;
+// };
+
 
 onMounted(() => {
 
@@ -65,8 +89,9 @@ const config = useRuntimeConfig()
                 </template>
                 <template #default>
                     <div>
+                        <ProjectCarousel v-if="item.images.length > 0" :images="item.images" @update:images="selectImages" />
                         <p class="text-sm sm:text-base">{{ item.description }}</p>
-                        <hr v-if="item.detail"/>
+                        <hr v-if="item.detail" />
                         <div v-html="item.detail"
                             class="prose prose-slate prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:my-0 prose-img:rounded-lg  prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
                         </div>
@@ -74,5 +99,17 @@ const config = useRuntimeConfig()
                 </template>
             </BaseAccordionItem>
         </BaseAccordion>
+        <VueEasyLightbox v-if="imagesRef.length > 0" class="absolute" :visible="visibleRef"
+            :imgs="imagesRef"
+            :index="imagesIndexRef" @hide="onHide" />
     </section>
 </template>
+
+
+<style scoped>
+body.no-scroll {
+  overflow: hidden;
+  touch-action: none; /* prevent touch scrolling */
+}
+
+</style>

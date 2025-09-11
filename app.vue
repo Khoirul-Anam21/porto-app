@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Analytics } from '@vercel/analytics/nuxt';
+import { SpeedInsights } from '@vercel/speed-insights/vue';
 const { system, store } = useColorMode()
 
 watch(system, (newv, old) => {
@@ -17,6 +18,7 @@ watch(system, (newv, old) => {
     <div class="scroll-smooth">
       <NuxtLayout>
         <Analytics />
+        <SpeedInsights />
         <NuxtPage />  
       </NuxtLayout>
     </div>

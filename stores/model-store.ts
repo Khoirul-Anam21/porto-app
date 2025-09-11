@@ -111,7 +111,7 @@ export interface Project {
     readonly short_desc: string;
     readonly type: number;
     readonly skills_used: any[];
-    readonly images: any[];
+    readonly images: ProjectFiles[];
 }
 
 export interface Skill {
