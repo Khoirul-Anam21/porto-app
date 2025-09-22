@@ -8,14 +8,6 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
-  "modules": [
-    "@nuxt/image"
-  ],
-  "image": {
-    "format": [
-      "webp"
-    ]
-  },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/types": "^2.17.3",

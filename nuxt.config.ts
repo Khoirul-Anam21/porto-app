@@ -19,6 +19,11 @@ export default defineNuxtConfig({
   },
   plugins: [],
   modules: ['@vueuse/nuxt', 'nuxt-icon', '@pinia/nuxt', "@nuxt/image", "nuxt-directus", "nuxt-aos", 'nuxt-easy-lightbox'],
+  image: {
+    format: [
+      "webp"
+    ]
+  },
   directus: {
     url: process.env.API_BASE || "http://localhost:8055"
   },
