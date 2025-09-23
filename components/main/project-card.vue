@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { skillData } from '#imports';
 
-
 const props = defineProps<{
   project: ProjectInterface
 }>()
@@ -13,7 +12,6 @@ const techStacksIcons = computed(() => {
   });
   return iconizeStacks;
 })
-
 const openLink = (url: string) => {
   window.open(url, '_blank')
 }
