@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// cat loader
+// load cat loading
 </script>
 
 <template>
