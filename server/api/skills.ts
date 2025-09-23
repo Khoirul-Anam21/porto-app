@@ -1,7 +1,6 @@
 export default defineEventHandler(async (event) => {
     try {
         const config = useRuntimeConfig()
-        // console.log(config.public.apiBase);
 
         const result: any = await $fetch(`${config.public.apiBase}/items/skills`, {
             method: "GET",

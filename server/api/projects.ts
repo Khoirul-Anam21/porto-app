@@ -18,7 +18,6 @@ export default defineEventHandler(async (event) => {
             projects: projectsResult.data,
         }
 
-        console.log(response);
         
         return JSON.stringify(response);
         

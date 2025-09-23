@@ -6,7 +6,6 @@ export default defineEventHandler(async (event) => {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });
-        console.log(result);
 
         return JSON.stringify(result.data);
         

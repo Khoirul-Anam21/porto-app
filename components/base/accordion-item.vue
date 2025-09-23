@@ -14,7 +14,6 @@ const height = ref(0)
 const PADDING_HEIGHT = 32;
 
 watch(activeItemId, () => {
-    // console.log(newVal);
     nextTick(updateHeight);
     updateHeight()
     if (height.value === 0) {
@@ -23,8 +22,6 @@ watch(activeItemId, () => {
 })
 
 const toggleCollapse = () => {
-    console.log(activeItemId.value);
-
     isActive.value = !isActive.value
 
     if (activeItemId.value !== props.itemId) {

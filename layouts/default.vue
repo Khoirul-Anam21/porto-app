@@ -50,7 +50,6 @@ const updateHeight = () => {
 }
 
 watch(stateStore.$state, (newV, oldV) => {
-    console.log(newV);
     if (!newV.socmedActive) {
         return
     }
@@ -114,7 +113,7 @@ onMounted(() => {
                                 class="transform-gpu transition-all duration-500" />
                         </div>
                         <div class="-translate-y-1/4 flex flex-row justify-between md:justify-center w-full items-end">
-                            <NuxtImg class="rounded-full w-[120px] h-[120px] md:w-[200px] md:h-[200px] object-cover "
+                            <NuxtImg class="rounded-full w-[120px] h-[120px] md:w-[200px] md:h-[200px] object-cover " format="webp"
                                 src="https://res.cloudinary.com/dj8gvk6wr/image/upload/v1753718118/IMG_20250728_211241_oofgyx.jpg"
                                 alt="Profile Image"></NuxtImg>
                             <div class="flex flex-row pt-4  gap-3 md:hidden">

@@ -22,7 +22,6 @@ export default defineEventHandler(async (event) => {
             experiences: experienceResult.data,
         }
 
-        // console.log(response);
         
         return JSON.stringify(response);
     } catch (err) {

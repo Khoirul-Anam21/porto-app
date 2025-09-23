@@ -34,7 +34,7 @@ const key = getCurrentInstance()?.vnode.key
                         props.experience.date_end ? formatDate(props.experience.date_end) : 'Now' }}</span>
             </section>
             <section class="text-sm md:text-base">
-                <div v-html="props.experience.job_detail" class="prose prose-slate prose-sm sm:prose-base dark:prose-invert prose-li:my-0 prose-p:my-0 prose-img:rounded-lg  prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
+                <div v-html="props.experience.job_detail" class="prose prose-slate prose-sm sm:prose-base dark:prose-invert prose-li:my-0 prose-p:my-0 prose-img:rounded-lg  prose-img:w-[70%] prose-h1:text-slate-700 prose-p:text-gray-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
                 </div>
             </section>
         </div>

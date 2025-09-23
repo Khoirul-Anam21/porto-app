@@ -28,7 +28,7 @@ const config = useRuntimeConfig()
         </div>
         <MainWavyLoader v-if="status !== 'success'" />
 
-        <p data-aos="fade-up" data-aos-duration="1000" v-if="status === 'success'" class="md:text-lg text-sm">{{ content?.about_desc }}</p>
+        <p data-aos="fade-up" data-aos-duration="1000" v-if="status === 'success'" class="md:text-lg text-sm text-gray-800">{{ content?.about_desc }}</p>
       </div>
       <div class="mb-6">
 

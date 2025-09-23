@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    body {
-        @apply text-primary-dark dark:text-primary-light
-    }
-}
 
 @layer base{
     html {
@@ -14,11 +9,6 @@
     }
 }
 
-@layer components {
-    .primary-text{
-        @apply text-primary-dark dark:text-white
-    }
-}
 
 @layer components {
     .highlight-text{
@@ -26,11 +16,6 @@
     }
 }
 
-@layer components {
-    .secondary-text{
-        @apply text-primary-dark text-opacity-70 dark:text-white dark:text-opacity-70
-    }
-}
 
 @layer utilities {
     .paused {
@@ -46,5 +31,14 @@
 @layer components {
     .side-btn{
         @apply bg-white text-dark-turquoise border-2 border-slate-900
+    }
+}
+
+@layer base{
+    h1{
+        @apply text-black
+    }
+    h2{
+        @apply text-black
     }
 }

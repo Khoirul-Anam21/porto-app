@@ -18,7 +18,23 @@ export default defineNuxtConfig({
     typeCheck: false,
   },
   plugins: [],
-  modules: ['@vueuse/nuxt', 'nuxt-icon', '@pinia/nuxt', "@nuxt/image", "nuxt-directus", "nuxt-aos", 'nuxt-easy-lightbox'],
+  modules: [
+    '@vueuse/nuxt',
+    'nuxt-icon',
+    '@pinia/nuxt',
+    "@nuxt/image",
+    "nuxt-directus",
+    "nuxt-aos",
+    'nuxt-easy-lightbox',
+    'nuxt-vitalizer',
+  ],
+  vitalizer: {
+    // Remove the render-blocking entry CSS
+    disableStylesheets: 'entry',
+    disablePrefetchLinks: true
+
+    // Remove the render-blocking entry JS
+  },
   directus: {
     url: process.env.API_BASE || "http://localhost:8055"
   },

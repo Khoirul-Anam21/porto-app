@@ -8,9 +8,7 @@ const props = defineProps<{
 
 const techStacksIcons = computed(() => {
   const iconizeStacks = props.project.techstacks.map((val, index) => {
-    // console.log(skillData.value);
     const skill = skillData.value.filter((skillVal) => skillVal.name === val)[0];
-    console.log(skill);
     return ''
   });
   return iconizeStacks;
