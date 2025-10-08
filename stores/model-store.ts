@@ -104,6 +104,7 @@ export interface Project {
     readonly id: number;
     readonly date_created: Date;
     readonly user_updated: string;
+    readonly description: string;
     readonly is_active: boolean;
     readonly date_updated: Date;
     readonly title: string;

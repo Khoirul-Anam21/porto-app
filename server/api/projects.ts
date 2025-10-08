@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
         const config = useRuntimeConfig()
 
         const [projectsResult, types] = await Promise.all([
-            await $fetch(`${config.public.apiBase}/items/projects?fields=*,images.*`, {
+            await $fetch(`${config.public.apiBase}/items/projects?fields=*,images.*,skills_used.skills_id.*`, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }
             }) as Promise<any>,
