@@ -1,17 +1,33 @@
+import { query } from '~/server/utils/database'
+
 export default defineEventHandler(async (event) => {
-    try {
-        const config = useRuntimeConfig()
+  try {
+    console.log('📡 Fetching skills...')
+    
+    const skills = await query(
+      `SELECT id, title, icon, icon_url
+       FROM skills 
+       WHERE status = $1 
+       ORDER BY sort ASC`,
+      ['published']
+    )
 
-        const result: any = await $fetch(`${config.public.apiBase}/items/skills`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        });
-        return JSON.stringify(result.data);
-    } catch (err) {
-        throw createError({
-            message: "Failed to fetch data",
-            statusCode: 404,
-        });
-    }
-
+    console.log('✅ Skills endpoint success, returned', skills.length, 'records')
+    return skills
+    
+  } catch (err: any) {
+    console.error('❌ Failed to fetch skills:')
+    console.error('Error type:', err.constructor.name)
+    console.error('Error message:', err.message)
+    console.error('Full error:', err)
+    
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Database Error',
+      data: {
+        message: err.message,
+        hint: 'Check database connection'
+      }
+    })
+  }
 })

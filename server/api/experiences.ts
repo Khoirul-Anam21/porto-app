@@ -1,34 +1,57 @@
+import { query } from '~/server/utils/database'
+
 export default defineEventHandler(async (event) => {
-    try {
-        const config = useRuntimeConfig()
+  try {
+    console.log('📡 Fetching job types...')
+    
+    // Fetch job types
+    const types = await query(
+      `SELECT id, name, status
+       FROM job_types 
+       WHERE status = $1`,
+      ['published']
+    )
+    console.log('✅ Job types:', types.length)
 
-        const [experienceResult, experienceType] = await Promise.all([
-            await $fetch(`${config.public.apiBase}/items/experiences`, {
-                method: "GET",
-                headers: { "Content-Type": "application/json" },
-            }) as Promise<any>,
-            await $fetch(`${config.public.apiBase}/items/job_types`, {
-                method: "GET",
-                headers: { "Content-Type": "application/json" },
-            }) as Promise<any>,
-        ]);
-        const result: any = await $fetch(`${config.public.apiBase}/items/experiences`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        });
+    // Fetch experiences
+    console.log('📡 Fetching experiences...')
+    const experiences = await query(
+      `SELECT 
+        id,
+        company,
+        position,
+        job_type,
+        job_detail,
+        date_start,
+        date_end,
+        sequence
+       FROM experiences 
+       WHERE status = $1 
+       ORDER BY sequence ASC`,
+      ['published']
+    )
+    console.log('✅ Experiences:', experiences.length)
 
-        const response = {
-            types: experienceType.data,
-            experiences: experienceResult.data,
-        }
-
-        
-        return JSON.stringify(response);
-    } catch (err) {
-        throw createError({
-            message: "Failed to fetch data",
-            statusCode: 404,
-        });
+    console.log('✅ Experiences endpoint success')
+    
+    return {
+      types,
+      experiences
     }
-
+    
+  } catch (err: any) {
+    console.error('❌ Failed to fetch experiences:')
+    console.error('Error type:', err.constructor.name)
+    console.error('Error message:', err.message)
+    console.error('Full error:', err)
+    
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Database Error',
+      data: {
+        message: err.message,
+        hint: 'Check database connection'
+      }
+    })
+  }
 })

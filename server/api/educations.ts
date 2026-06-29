@@ -1,19 +1,41 @@
+import { query } from '~/server/utils/database'
+
 export default defineEventHandler(async (event) => {
-    try {
-        const config = useRuntimeConfig()
+  try {
+    console.log('📡 Fetching educations...')
+    
+    const educations = await query(
+      `SELECT 
+        id,
+        institution,
+        major,
+        education_type,
+        date_start,
+        date_end,
+        sequence,
+        detail
+       FROM educations 
+       WHERE status = $1 
+       ORDER BY sequence ASC`,
+      ['published']
+    )
 
-        const result: any = await $fetch(`${config.public.apiBase}/items/educations`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        });
-
-        return JSON.stringify(result.data);
-        
-    } catch (err) {
-        throw createError({
-            message: "Failed to fetch data",
-            statusCode: 404,
-        });
-    }
-
+    console.log('✅ Educations endpoint success, returned', educations.length, 'records')
+    return educations
+    
+  } catch (err: any) {
+    console.error('❌ Failed to fetch educations:')
+    console.error('Error type:', err.constructor.name)
+    console.error('Error message:', err.message)
+    console.error('Full error:', err)
+    
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Database Error',
+      data: {
+        message: err.message,
+        hint: 'Check database connection'
+      }
+    })
+  }
 })
