@@ -2,11 +2,6 @@
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   ssr: false,
-  routeRules: {
-    '/assets/**': {
-      proxy: { to: "https:admin.anam6.my.id/assets/**", },
-    }
-  },
   devtools: { enabled: true },
   postcss: {
     plugins: {
@@ -23,34 +18,37 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@pinia/nuxt',
     "@nuxt/image",
-    "nuxt-directus",
     "nuxt-aos",
     'nuxt-easy-lightbox',
     'nuxt-vitalizer',
   ],
   vitalizer: {
-    // Remove the render-blocking entry CSS
     disableStylesheets: 'entry',
     disablePrefetchLinks: true
-
-    // Remove the render-blocking entry JS
-  },
-  directus: {
-    url: process.env.API_BASE || "http://localhost:8055"
   },
   aos: {
-    disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-    startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
-    initClassName: 'aos-init', // class applied after initialization
-    animatedClassName: 'aos-animate', // class applied on animation
-    useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-    disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-    debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-    throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
+    disable: false,
+    startEvent: 'DOMContentLoaded',
+    initClassName: 'aos-init',
+    animatedClassName: 'aos-animate',
+    useClassNames: false,
+    disableMutationObserver: false,
+    debounceDelay: 50,
+    throttleDelay: 99,
   },
   runtimeConfig: {
+    // Private keys that are only available server-side
+    dbHost: process.env.DB_HOST,
+    dbPort: process.env.DB_PORT,
+    dbName: process.env.DB_NAME,
+    dbUser: process.env.DB_USER,
+    dbPassword: process.env.DB_PASSWORD,
+    
+    // Public keys that are exposed to the client
     public: {
-      apiBase: process.env.API_BASE || "https://cms.itsanam.my.id",
+      experience_icon: 'https://res.cloudinary.com/dj8gvk6wr/image/upload/v1750565223/directus/e152b968-e69a-4ffe-98e9-462259279d9a__7abd30a2f63f675625d6888e2ed9d65992751e3c.avif',
+      education_icon: 'https://res.cloudinary.com/dj8gvk6wr/image/upload/v1750564668/directus/eba4f0dd-0e95-48f4-84c2-f5b52812bbbf__7abd30a2f63f675625d6888e2ed9d65992751e3c.avif'
+      // If you need any public config, add here
     }
   },
   compatibilityDate: '2024-07-05',

@@ -34,7 +34,7 @@ export interface MainContent {
 export interface ProjectType {
     readonly id: number;
     readonly name: string;
-    readonly icon: string;
+    readonly icon_img: string;
 }
 
 export interface Education {
@@ -67,7 +67,7 @@ export interface Specialty {
     readonly date_created: Date;
     readonly description: string;
     readonly date_updated: Date;
-    readonly icon: string;
+    readonly icon_img: string;
 }
 
 export interface Experience {
@@ -122,6 +122,7 @@ export interface Skill {
     readonly date_updated: Date | null;
     readonly title: string;
     readonly icon: string;
+    readonly icon_url: string;
     readonly skill_icon_title: string;
 }
 
