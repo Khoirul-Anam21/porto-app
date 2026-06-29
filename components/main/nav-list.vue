@@ -6,8 +6,8 @@ import { ref, onMounted, onUnmounted } from 'vue';
 </script>
 
 <template>
-  <header class="basis-[10%] md:basis-[12%] scroll-container overflow-hidden relative" >
-    <nav class="flex flex-row space-x-4 scroll-content overflow-x-scroll overflow-y-hidden whitespace-nowrap no-scrollbar">
+  <header class="scroll-container overflow-hidden relative rounded-2xl bg-white border-2 border-black border-opacity-85 py-2 px-3">
+    <nav class="flex flex-row gap-2 sm:space-x-4 overflow-x-auto whitespace-nowrap no-scrollbar">
       <BaseNavBtn name="About Me" route="/"/>
       <BaseNavBtn name="Projects" route="/projects"/>
       <BaseNavBtn name="Experiences & Skills" route="/experiences" />

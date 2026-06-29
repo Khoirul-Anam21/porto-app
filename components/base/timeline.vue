@@ -8,16 +8,15 @@ const mainDuration = 500; // base duration for AOS animations
 
 </script>
 <template>
-    <div class="w-full flex flex-row h-[200px] gap-4 md:gap-8 px-4 pt-2" >
-        <div data-aos="zoom-in-up" :data-aos-duration="mainDuration + (keyIndex * 200)" class="flex flex-col h-full items-center justify-between relative">
+    <div class="w-full flex flex-row gap-4 md:gap-8 px-4 pt-2">
+        <div data-aos="zoom-in-up" :data-aos-duration="mainDuration + (keyIndex * 200)" class="flex flex-col items-center relative shrink-0">
             <div class="w-6 md:w-10 h-6 md:h-10 bg-black relative mt-1">
                 <div class="w-6 md:w-10 h-6 md:h-10 bg-purple-400 border border-black -translate-x-1 -translate-y-1"></div>
             </div>
-            <div class="my-1 timeline-custom-line">
-            </div>
+            <div class="flex-1 my-1 timeline-custom-line"></div>
         </div>
         <div data-aos="fade-left" data-aos-delay="100" :data-aos-duration="mainDuration + (keyIndex * 200)" class="flex-grow pb-6">
-            <div class="w-full h-full bg-pink-50 rounded-2xl border-2 border-black">
+            <div class="w-full bg-pink-50 rounded-2xl border-2 border-black">
                 <slot></slot>
             </div>
         </div>

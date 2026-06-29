@@ -41,7 +41,7 @@ const projectData = computed(() => {
 })
 
 const getIconFromProjectType = (typeId: number) => {
-    return props.projectTypes?.filter((projectType: ProjectType) => projectType.id === typeId)[0].icon;
+    return props.projectTypes?.filter((projectType: ProjectType) => projectType.id === typeId)[0].icon_img;
 }
 
 const updateOption = (key: number) => {
@@ -71,7 +71,7 @@ const config = useRuntimeConfig()
 </script>
 
 <template>
-    <section>
+    <section class="overflow-hidden">
         <span class="text-[8pt] md:hidden">Swipe >></span>
         <BaseOption :data="[allCategoryForNav, ...dataNav]" class="mb-4" @update-current-option="updateOption" />
         <BaseAccordion>
@@ -79,8 +79,8 @@ const config = useRuntimeConfig()
                 :data-aos-delay="index * 200" :key="index" :item-id="index" class="bg-yellow-100">
                 <template #header>
                     <section class="flex gap-4 items-start px-2 bread sticky">
-                        <div class=" w-[60px] py-1">
-                            <NuxtImg :src="`${config.public.apiBase}/assets/${getIconFromProjectType(item.type)}`" />
+                        <div class="max-w-[40px] py-1">
+                            <NuxtImg :src="`${getIconFromProjectType(item.type)}`" />
                         </div>
                         <div class="py-1 sm:py-2 text-start">
                             <h5 class="font-bold sm:text-lg md:font-normal md:text-2xl">{{ item.title }}</h5>
@@ -97,14 +97,14 @@ const config = useRuntimeConfig()
                             <div v-for="(skill, idx) in item.skills_used" :key="idx">
                                 <div
                                     class="flex items-center gap-2 px-4 py-1 bg-blue-100 rounded-full text-sm sm:text-base">
-                                    <NuxtImg class="w-6" :src="`${config.public.apiBase}/assets/${skill.skills_id.icon}`" />
-                                    <span>{{ skill.skills_id.title }}</span>
+                                    <!-- <NuxtImg class="w-6" :src="`${config.public.apiBase}/assets/${skill.skills_id.icon}`" /> -->
+                                    <!-- <span>{{ skill.skills_id.title }}</span> -->
                                 </div>
                             </div>
                         </div>
                         <hr v-if="item.detail" />
                         <div v-html="item.detail"
-                            class="prose prose-neutral prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:text-black prose-p:text-base prose-li:text-sm prose-img:rounded-lg  prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl">
+                            class="prose prose-neutral prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:text-black prose-p:text-base prose-li:text-sm prose-img:rounded-lg prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl overflow-hidden">
                         </div>
                     </div>
 

@@ -25,11 +25,10 @@ const numIndex = computed(() => {
 </script>
 
 <template>
-    <div class="relative md:w-[48%] w-full md:max-w-[400px] h-max min-h-[300px] sm:min-h-[250px] md:min-h-[280px]">
-        <div class="absolute z-10 w-full h-full border-2 border-black rounded-2xl bg-none">
+    <div class="relative md:w-[48%] w-full md:max-w-[400px] h-max overflow-hidden rounded-2xl">
+        <div :class="styles[numIndex]"></div>
+        <div class="relative z-10 w-full border-2 border-black rounded-2xl bg-none">
             <slot :textStyle="textStyles[numIndex]"></slot>
-        </div>
-        <div :class="styles[numIndex]" ref="contentRef">
         </div>
     </div>
 </template>

@@ -18,8 +18,8 @@ const key = getCurrentInstance()?.vnode.key
         <div class="py-6 px-4 space-y-3">
             <section class="flex gap-2 md:gap-4">
                 <div class="flex justify-center items-start md:items-center  basis-[25%] md:basis-[12%]">
-                    <NuxtImg :src="`${config.public.apiBase}/assets/eba4f0dd-0e95-48f4-84c2-f5b52812bbbf`"
-                        class="w-[80%]" />
+                    <NuxtImg :src="`${config.public.education_icon}`"
+                        class="w-[40px]" />
                 </div>
                 <div class="flex-grow">
                     <p class="text-sm md:text-base" >{{ props.education.institution }}</p>
