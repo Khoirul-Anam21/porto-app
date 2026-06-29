@@ -3,9 +3,10 @@
 import { type Education, type Project, type ProjectType } from '../stores/model-store';
 
 const { status, data, execute } = useLazyFetch("/api/projects", { server: false });
+console.log(data.value);
 
-const contents: Ref<Project[] | null> = computed(() => data.value ?  [...JSON.parse(data.value).projects]  : null);
-const types: Ref<ProjectType[] | null> = computed(() => data.value ?  [...JSON.parse(data.value).types]  : null);
+const contents: Ref<Project[] | null> = computed(() => data.value ? [...data.value.projects] : null);
+const types: Ref<ProjectType[] | null> = computed(() => data.value ? [...data.value.types] : null);
 
 
 onMounted(() => execute());
@@ -20,8 +21,9 @@ onMounted(() => execute());
       <BaseRoundDecor />
     </div>
     <MainWavyLoader v-if="status !== 'success'" />
-    <p data-aos="fade-up" data-aos-duration="700" v-if="status === 'success'" class="text-base md:text-lg">Every task is a chance to learn and grow</p>
-    <br class="hidden md:block" >
+    <p data-aos="fade-up" data-aos-duration="700" v-if="status === 'success'" class="text-base md:text-lg">Every task is a
+      chance to learn and grow</p>
+    <br class="hidden md:block">
     <MainProjectList v-if="status === 'success'" :projects="contents" :project-types="types" />
   </section>
 </template>

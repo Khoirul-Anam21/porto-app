@@ -4,7 +4,7 @@ import { type Education } from '../stores/model-store';
 
 const { status, data, execute } = useLazyFetch("/api/educations", { server: false });
 
-const educations: Ref<Education[] | null> = computed(() => data.value ? [ ...JSON.parse(data.value) ] : null);
+const educations: Ref<Education[] | null> = computed(() => data.value ? [ ...data.value ] : null);
 
 onMounted(() => execute());
 </script>

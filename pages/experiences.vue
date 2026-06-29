@@ -5,9 +5,9 @@ import { type Experience, type Skill, type ExperienceType } from '../stores/mode
 const { status: exStatus, data: exData, execute: exExecute } = useLazyFetch("/api/experiences", { server: false });
 const { status: skStatus, data: skData, execute: skExecute } = useLazyFetch("/api/skills", { server: false });
 
-const experiences: Ref<Experience[] | null> = computed(() => exData.value ? [...JSON.parse(exData.value).experiences] : null);
-const experience_types: Ref<ExperienceType[] | null> = computed(() => exData.value ? [...JSON.parse(exData.value).types] : null);
-const skills: Ref<Skill[] | null> = computed(() => skData.value ? [...JSON.parse(skData.value)] : null);
+const experiences: Ref<Experience[] | null> = computed(() => exData.value ? [...exData.value.experiences] : null);
+const experience_types: Ref<ExperienceType[] | null> = computed(() => exData.value ? [...exData.value.types] : null);
+const skills: Ref<Skill[] | null> = computed(() => skData.value ? [...skData.value] : null);
 
 onMounted(() => {
     exExecute();
@@ -49,7 +49,7 @@ const getExperienceTypeById = (id: number) => {
             <div class="flex h-max flex-col items-start md:items-center mx-10">
                 <div class="relative flex md:flex-col w-full mt-4 items-center mb-4">
                     <div class="h-1 w-28 md:h-28 md:w-1 bg-slate-500"></div>
-                    <BaseRoundDecor class="absolute md:bottom-0 border-4 border-white scale-150" />
+                    <BaseRoundDecor class=" md:bottom-0 border-4 border-white scale-150" />
                 </div>
                 <h1 class="text-5xl text-vertical">My Skills</h1>
             </div>
