@@ -10,13 +10,13 @@ const mainDuration = 500; // base duration for AOS animations
 <template>
     <div class="w-full flex flex-row gap-4 md:gap-8 px-4 pt-2">
         <div data-aos="zoom-in-up" :data-aos-duration="mainDuration + (keyIndex * 200)" class="flex flex-col items-center relative shrink-0">
-            <div class="w-6 md:w-10 h-6 md:h-10 bg-black relative mt-1">
-                <div class="w-6 md:w-10 h-6 md:h-10 bg-purple-400 border border-black -translate-x-1 -translate-y-1"></div>
+            <div class="w-6 md:w-10 h-6 md:h-10 bg-leaf rounded-full relative mt-1 shadow-md">
+                <div class="w-6 md:w-10 h-6 md:h-10 bg-leaf-light rounded-full -translate-x-1 -translate-y-1"></div>
             </div>
-            <div class="flex-1 my-1 timeline-custom-line"></div>
+            <div class="flex-1 my-1 timeline-organic-line"></div>
         </div>
-        <div data-aos="fade-left" data-aos-delay="100" :data-aos-duration="mainDuration + (keyIndex * 200)" class="flex-grow pb-6">
-            <div class="w-full bg-pink-50 rounded-2xl border-2 border-black">
+        <div data-aos="fade-left" data-aos-delay="100" :data-aos-duration="mainDuration + (keyIndex * 200)" class="flex-grow min-w-0 pb-6">
+            <div class="w-full paper-card paper-card-raised p-4">
                 <slot></slot>
             </div>
         </div>
@@ -25,16 +25,11 @@ const mainDuration = 500; // base duration for AOS animations
 
 <style scoped>
 
-.timeline-custom-line {
+.timeline-organic-line {
     height: 100%;
-    width: 4px;
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='10' stroke-dasharray='7%2c 14%2c 9' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
-    /* background-position: top;
-    background-size: 10px 1px;
-    background-repeat: repeat-x;
-    border-color: red;
-    border-width: 2px;
-    border-style: dashed; */
+    width: 3px;
+    background: linear-gradient(180deg, #6B8F3C 0%, #D4C9B8 100%);
+    border-radius: 2px;
 }
 
 </style>

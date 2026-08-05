@@ -18,7 +18,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="wrapper scroll-container overflow-hidden relative whitespace-nowrap no-scrollbar">
+    <div class="wrapper scroll-container relative whitespace-nowrap no-scrollbar">
         <div v-for="(item, index) in props.data"  data-aos="fade-left" data-aos-duration="500" :data-aos-delay="index * 100" :key="index" class="option ">
             <input :key="index" class="input" type="radio" name="btn" :value="item"
                 @change="() => emit('updateCurrentOption', item.key)" :checked="index === 0">
@@ -43,6 +43,7 @@ onMounted(() => {
     white-space: nowrap;
     cursor: grab;
     user-select: none;
+    -webkit-overflow-scrolling: touch;
 }
 
 .grid-wrapper {
@@ -64,19 +65,19 @@ onMounted(() => {
 }
 
 .wrapper {
-    --font-color-dark: #323232;
+    --font-color-dark: #5C4033;
     --font-color-light: #FFF;
-    --bg-color: #fff;
-    --main-color: #323232;
+    --bg-color: #F8F4EC;
+    --main-color: #6B8F3C;
     position: relative;
     width: 100%;
     height: 36px;
     background-color: var(--bg-color);
-    border: 2px solid var(--main-color);
+    border: 1px solid #D4C9B8;
     border-radius: 34px;
     display: flex;
     flex-direction: row;
-    box-shadow: 4px 4px var(--main-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
 .option {
@@ -85,6 +86,7 @@ onMounted(() => {
     position: relative;
     top: 2px;
     left: 2px;
+    flex-shrink: 0;
 }
 
 .input {
@@ -109,6 +111,14 @@ onMounted(() => {
 
 .span {
     color: var(--font-color-dark);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+    .span {
+        font-size: 14px;
+    }
 }
 
 .input:checked+.btn {

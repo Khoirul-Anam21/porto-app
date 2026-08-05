@@ -110,14 +110,14 @@
 }
 
 .zzz {
-    color: black;
+    color: #6B8F3C;
     font-weight: 700;
     font-size: 15px;
     animation: zzz 2s linear infinite;
 }
 
 .bigzzz {
-    color: black;
+    color: #4A6B28;
     font-weight: 700;
     font-size: 25px;
     margin-left: 10px;

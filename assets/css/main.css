@@ -2,43 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@layer base{
+@layer base {
     html {
         @apply scroll-smooth
     }
-}
-
-
-@layer components {
-    .highlight-text{
-        @apply text-turquoise 
+    
+    h1 {
+        @apply text-bark
+    }
+    
+    h2 {
+        @apply text-bark
+    }
+    
+    body {
+        @apply bg-paper text-bark
     }
 }
 
+@layer components {
+    .highlight-text {
+        @apply text-leaf
+    }
+    
+    .paper-card {
+        @apply bg-paper rounded-2xl transition-all duration-300;
+        box-shadow:
+            inset 1px 1px 0 rgba(255,255,255,0.7),
+            inset -1px -1px 0 rgba(0,0,0,0.05),
+            0 1px 3px rgba(0,0,0,0.12);
+    }
+    
+    .paper-card-raised {
+        box-shadow:
+            inset 1px 1px 0 rgba(255,255,255,0.8),
+            inset -1px -1px 0 rgba(0,0,0,0.06),
+            3px 3px 10px rgba(0,0,0,0.15),
+            -1px -1px 0 rgba(255,255,255,0.5);
+    }
+    
+    .paper-card:hover {
+        @apply shadow-paper-lg;
+        transform: translateY(-2px);
+    }
+    
+    .paper-card-flat {
+        @apply bg-paper rounded-2xl border border-paper-edge shadow-paper transition-all duration-200;
+    }
+
+    .paper-edge {
+        position: relative;
+    }
+
+    .paper-edge::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        pointer-events: none;
+    }
+    
+    .paper-btn {
+        @apply px-6 py-2 rounded-full font-medium transition-all duration-200;
+        background: linear-gradient(135deg, #6B8F3C 0%, #4A6B28 100%);
+        color: white;
+        box-shadow: 0 2px 8px rgba(107, 143, 60, 0.3);
+    }
+    
+    .paper-btn:hover {
+        box-shadow: 0 4px 12px rgba(107, 143, 60, 0.4);
+        transform: translateY(-1px);
+    }
+    
+    .paper-btn:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 4px rgba(107, 143, 60, 0.3);
+    }
+    
+    .paper-chip {
+        @apply px-4 py-1 rounded-full text-sm font-medium;
+        background: #F0EDE5;
+        border: 1px solid #D4C9B8;
+        color: #5C4033;
+    }
+    
+    .paper-chip:hover {
+        @apply bg-paper-edge;
+    }
+    
+    .primary-btn {
+        @apply paper-btn
+    }
+    
+    .side-btn {
+        @apply bg-paper text-bark border border-paper-edge
+    }
+}
 
 @layer utilities {
     .paused {
-      animation-play-state: paused;
-    }
-  }
-  
-@layer components {
-    .primary-btn{
-        @apply bg-dark-turquoise text-primary-light px-4 py-2 shadow-lg  dark:border dark:border-turquoise dark:bg-primary-dark dark:shadow-none
-    }
-}
-@layer components {
-    .side-btn{
-        @apply bg-white text-dark-turquoise border-2 border-slate-900
-    }
-}
-
-@layer base{
-    h1{
-        @apply text-black
-    }
-    h2{
-        @apply text-black
+        animation-play-state: paused;
     }
 }

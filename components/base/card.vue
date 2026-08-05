@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
 const style = {
-    "red": "absolute w-full h-full rounded-2xl  bg-red-100",
-    "orange": "absolute w-full h-full rounded-2xl bg-orange-100",
-    "purple": "absolute w-full h-full rounded-2xl bg-purple-100",
-    "green": "absolute w-full h-full rounded-2xl bg-green-100",
-    "classic": "absolute w-full h-full rounded-2xl bg-slate-50",
+    "red": "absolute w-full h-full rounded-2xl bg-leaf-light/30",
+    "orange": "absolute w-full h-full rounded-2xl bg-sunlight-light/30",
+    "purple": "absolute w-full h-full rounded-2xl bg-sky-light/30",
+    "green": "absolute w-full h-full rounded-2xl bg-leaf-light/30",
+    "classic": "absolute w-full h-full rounded-2xl bg-paper-dark",
 }
 
 const props = defineProps<{
@@ -19,8 +19,8 @@ const props = defineProps<{
 <template>
     <div class="relative w-[600px] h-[500px]">
 
-        <div class="absolute w-full h-full border-2 border-black bg-black rounded-2xl bg-none translate-x-1 translate-y-1"></div>
-        <div  :class="style[props.color]" class="z-50 border-2 border-black p-2">
+        <div class="absolute w-full h-full border border-paper-edge bg-paper-shadow rounded-2xl translate-x-0.5 translate-y-0.5"></div>
+        <div  :class="style[props.color]" class="z-50 border border-paper-edge p-2 shadow-paper">
             <slot></slot>
         </div>  
     </div>

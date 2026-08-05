@@ -35,31 +35,31 @@ onMounted(() => {
                         class="w-12 h-12 md:w-14 md:h-14" />
                 </div>
                 <div class="flex-grow min-w-0">
-                    <p class="text-xs md:text-sm text-gray-500 uppercase tracking-wide">{{ props.experience.company }}</p>
-                    <h4 class="text-lg md:text-2xl font-bold mt-1 leading-snug">{{ props.experience.position }}</h4>
+                    <p class="text-xs md:text-sm text-bark-light uppercase tracking-wide">{{ props.experience.company }}</p>
+                    <h4 class="text-base sm:text-lg md:text-2xl font-bold mt-1 leading-snug break-words">{{ props.experience.position }}</h4>
                 </div>
             </section>
             <section class="flex flex-wrap gap-2 md:gap-3 items-center">
-                <span class="py-1.5 px-4 bg-red-200 rounded-lg text-xs font-medium">{{ props.experience_type?.name }}</span>
-                <span class="text-xs md:text-sm text-gray-500">{{ formatDate(props.experience.date_start) }} - {{
+                <span class="py-1.5 px-4 bg-leaf-light/30 text-leaf-dark rounded-lg text-xs font-medium">{{ props.experience_type?.name }}</span>
+                <span class="text-xs md:text-sm text-bark-light">{{ formatDate(props.experience.date_start) }} - {{
                     props.experience.date_end ? formatDate(props.experience.date_end) : 'Now' }}</span>
             </section>
-            <section class="text-sm md:text-base relative">
+            <section class="text-sm md:text-base relative min-w-0">
                 <div ref="detailRef"
                     :class="[
-                        'prose prose-slate prose-sm sm:prose-base dark:prose-invert',
+                        'prose prose-sm sm:prose-base dark:prose-invert',
                         'prose-li:my-1 prose-p:my-2 prose-ul:my-2 prose-ol:my-2',
                         'prose-img:rounded-lg prose-img:w-[70%]',
-                        'prose-headings:text-slate-700 prose-p:text-gray-600',
+                        'prose-headings:text-bark prose-p:text-bark-light',
                         'max-w-none',
                         !expanded && isOverflowing ? 'max-h-48 overflow-hidden' : ''
                     ]"
                     v-html="props.experience.job_detail">
                 </div>
                 <div v-if="isOverflowing"
-                    class="sticky bottom-0 left-0 w-full h-16 bg-gradient-to-t from-pink-50 via-pink-50/80 to-transparent flex items-end justify-center pb-2">
+                    class="sticky bottom-0 left-0 w-full h-16 bg-gradient-to-t from-paper via-paper/80 to-transparent flex items-end justify-center pb-2">
                     <button @click="expanded = !expanded"
-                        class="text-xs md:text-sm font-semibold text-dark-turquoise hover:text-turquoise transition-colors">
+                        class="text-xs md:text-sm font-semibold text-leaf hover:text-leaf-dark transition-colors">
                         {{ expanded ? '← Show less' : 'Show more →' }}
                     </button>
                 </div>

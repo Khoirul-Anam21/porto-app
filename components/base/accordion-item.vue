@@ -45,18 +45,18 @@ const updateHeight = () => {
 </script>
 
 <template>
-    <div class="relative rounded-2xl my-4 overflow-hidden">
-        <div class="w-full h-full card-container pl-4 py-4 pr-2 relative" :class="{ '-translate-x-2 -translate-y-2': isActive }">
+    <div class="relative rounded-2xl my-4">
+        <div class="w-full h-full card-container pl-4 py-4 pr-2 relative" :class="{ '-translate-x-1 -translate-y-1': isActive }">
             <button @click="toggleCollapse()" class="flex w-full justify-between items-center">
                 <slot name="header"></slot>
                 <Icon name="material-symbols:chevron-right-rounded" size="28"  :class="{
                     'rotate-90 transform-gpu transition-all duration-200 delay-200': isActive,
                     'rotate-0 transform-gpu transition-all duration-200 delay-200': !isActive,
-                }"></Icon name="">
+                }"></Icon >
             </button>
             <div ref="contentRef" :style="{
                 height: `${height}px`
-            }" class="transform-gpu overflow-hidden border-slate-300 px-2 transition-all duration-200 "
+            }" class="transform-gpu overflow-hidden px-2 transition-all duration-200 "
                 :class="{ 'p-2': isActive }">
                 <slot></slot>
             </div>
@@ -66,6 +66,6 @@ const updateHeight = () => {
 
 <style scoped>
 .card-container {
-    @apply bg-none border-black border-2 w-full h-full rounded-2xl transform-gpu transition-all duration-200 delay-200;
+    @apply bg-paper border border-paper-edge w-full h-full rounded-2xl transform-gpu transition-all duration-200 delay-200;
 }
 </style>

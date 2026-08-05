@@ -23,10 +23,10 @@
     height: 1em;
     margin: 0 0.25em;
     border-radius: 50%;
-    background-color: #e2f9ff;
+    background-color: #A8C97A;
     border: 2px;
     border-style: solid;
-    border-color: black;
+    border-color: #6B8F3C;
     animation: wave 1.5s infinite ease-in-out;
     transition: background-color 0.3s ease;
 }

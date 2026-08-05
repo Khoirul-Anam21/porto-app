@@ -71,19 +71,19 @@ const config = useRuntimeConfig()
 </script>
 
 <template>
-    <section class="overflow-hidden">
+    <section class="px-1 py-4">
         <span class="text-[8pt] md:hidden">Swipe >></span>
-        <BaseOption :data="[allCategoryForNav, ...dataNav]" class="mb-4" @update-current-option="updateOption" />
+        <BaseOption :data="[allCategoryForNav, ...dataNav]" class="mb-4 projects-filters" @update-current-option="updateOption" />
         <BaseAccordion>
-            <BaseAccordionItem v-for="(item, index) in projectData" data-aos="fade-left" data-aos-duration="500"
-                :data-aos-delay="index * 200" :key="index" :item-id="index" class="bg-yellow-100">
+            <BaseAccordionItem v-for="(item, index) in projectData"
+                :key="index" :item-id="index" class="paper-card paper-card-raised project-accordion-item">
                 <template #header>
-                    <section class="flex gap-4 items-start px-2 bread sticky">
-                        <div class="max-w-[40px] py-1">
+                    <section class="flex gap-2 sm:gap-4 items-start px-2 bread sticky min-w-0 flex-1">
+                        <div class="max-w-[32px] sm:max-w-[40px] py-1 shrink-0">
                             <NuxtImg :src="`${getIconFromProjectType(item.type)}`" />
                         </div>
-                        <div class="py-1 sm:py-2 text-start">
-                            <h5 class="font-bold sm:text-lg md:font-normal md:text-2xl">{{ item.title }}</h5>
+                        <div class="py-1 sm:py-2 text-start min-w-0 flex-1">
+                            <h5 class="font-bold text-sm sm:text-lg md:font-normal md:text-2xl break-words">{{ item.title }}</h5>
                         </div>
                     </section>
                 </template>
@@ -96,15 +96,13 @@ const config = useRuntimeConfig()
                         <div v-if="item.skills_used.length > 0" class="flex flex-wrap gap-2 mb-2">
                             <div v-for="(skill, idx) in item.skills_used" :key="idx">
                                 <div
-                                    class="flex items-center gap-2 px-4 py-1 bg-blue-100 rounded-full text-sm sm:text-base">
-                                    <!-- <NuxtImg class="w-6" :src="`${config.public.apiBase}/assets/${skill.skills_id.icon}`" /> -->
-                                    <!-- <span>{{ skill.skills_id.title }}</span> -->
+                                    class="flex items-center gap-2 px-4 py-1 bg-leaf-light/30 text-leaf-dark rounded-full text-sm sm:text-base">
                                 </div>
                             </div>
                         </div>
                         <hr v-if="item.detail" />
                         <div v-html="item.detail"
-                            class="prose prose-neutral prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:text-black prose-p:text-base prose-li:text-sm prose-img:rounded-lg prose-img:w-[70%] prose-h1:text-slate-700 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl overflow-hidden">
+                            class="prose prose-neutral prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:text-bark prose-p:text-base prose-li:text-sm prose-img:rounded-lg prose-img:w-[70%] prose-h1:text-bark prose-h1:text-3xl prose-h2:text-bark prose-h2:text-2xl prose-h3:text-bark prose-h3:text-xl overflow-hidden">
                         </div>
                     </div>
 

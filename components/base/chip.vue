@@ -14,12 +14,15 @@ const props = defineProps<{
     display: inline-block;
     text-align: center;
     text-decoration: none;
-    color: #0b0b0b;
-    background-color: #ffffff;
-    border: 2px solid #000;
+    color: #5C4033;
+    background-color: #F0EDE5;
+    border: 1px solid #D4C9B8;
     border-radius: 9999px;
-    box-shadow: 2px 2px 0px #000;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+}
+
+.comic-button:hover {
+    background-color: #E8E0D0;
 }
 
 </style>

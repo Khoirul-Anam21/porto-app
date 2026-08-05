@@ -46,7 +46,7 @@ const showImg = (index: number) => {
             <div class="overflow-x-auto w-full flex gap-4 no-scrollbar" :style="carouselStyle">
                 <NuxtImg v-for="(image, index) in props.images" :key="index"
                     :src="`${config.public.apiBase}/assets/${image.directus_files_id}`"
-                    class="w-[200px] h-[150px] object-cover rounded-lg border-2 border-black cursor-pointer"
+                    class="w-[200px] h-[150px] object-cover rounded-lg border border-paper-edge cursor-pointer shadow-paper"
                     @click="$emit('update:images', props.images.map(img => `${config.public.apiBase}/assets/${img.directus_files_id}`), index)" />
             </div>
             <!-- <div @click="next" class="carousel-swipe">
@@ -74,7 +74,7 @@ const showImg = (index: number) => {
 }
 
 .carousel-swipe {
-    @apply cursor-pointer z-10 h-[150px] bg-slate-100 mr-2 flex items-center justify-center rounded-lg border-black border-2;
+    @apply cursor-pointer z-10 h-[150px] bg-paper-dark mr-2 flex items-center justify-center rounded-lg border border-paper-edge shadow-paper;
 }
 
 </style>

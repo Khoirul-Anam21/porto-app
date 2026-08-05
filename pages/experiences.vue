@@ -9,62 +9,52 @@ const experiences: Ref<Experience[] | null> = computed(() => exData.value ? [...
 const experience_types: Ref<ExperienceType[] | null> = computed(() => exData.value ? [...exData.value.types] : null);
 const skills: Ref<Skill[] | null> = computed(() => skData.value ? [...skData.value] : null);
 
-onMounted(() => {
-    exExecute();
-    skExecute();
-});
+const drawerOpen = ref(true)
+const { initExperiencesAnimations, initExperiencesContentAnimations } = usePageAnimations()
 
-// get experience types by id
 const getExperienceTypeById = (id: number) => {
     return experience_types.value?.find(type => type.id === id);
 }
 
+onMounted(() => {
+    exExecute();
+    skExecute();
+    initExperiencesAnimations()
+});
+
+watch([exStatus, skStatus], ([exStat, skStat]) => {
+    if (exStat === 'success' || skStat === 'success') {
+        initExperiencesContentAnimations()
+    }
+})
 
 </script>
 <template>
-    <section class="flex flex-col md:flex-row">
-        <div class="basis-2/3 py-2 md:py-11 lg:py-16">
-            <div class="flex flex-col md:flex-row  md:items-center h-max pb-4 px-2 md:pb-10">
+    <section class="relative flex flex-col page-content">
+        <div class="py-2 md:py-11 lg:py-16 min-w-0 transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+             :class="{ 'md:pr-[140px]': drawerOpen }">
+            <div class="flex flex-col md:flex-row md:items-center h-max pb-4 px-2 md:pb-10">
                 <div class="relative h-10 inline-flex w-max items-center mr-4">
-                    <div class="w-28 h-1 bg-slate-500"></div>
-                    <BaseRoundDecor class="absolute right-0 border-4  border-white scale-150" />
+                    <div class="w-28 h-1 bg-paper-edge"></div>
+                    <BaseRoundDecor class="absolute right-0 border-4 border-paper scale-150" />
                 </div>
                 <div>
-                    <h1 class="text-5xl">My Experiences</h1>
-                    <p data-aos="fade-up" data-aos-duration="600" class="text-sm md:text-lg pt-2">Experience is the best teacher</p>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl experiences-title">My Experiences</h1>
+                    <p class="text-sm md:text-lg pt-2 experiences-subtitle">Experience is the best teacher</p>
                 </div>
-
             </div>
 
             <MainWavyLoader v-if="exStatus !== 'success'" />
-            <div v-if="exStatus === 'success'" class="md:px-14 lg:px-22">
+            <div v-if="exStatus === 'success'" class="px-2 md:px-14 lg:px-22">
                 <ExperienceTimeline v-for="(item, index) in experiences?.sort((a, b) => b.sequence - a.sequence)"
                     :key="index" :experience="item" :experience_type="getExperienceTypeById(item.job_type)" />
             </div>
         </div>
-        <div class="flex flex-col-reverse md:flex-row  overflow-hidden">
-            <div v-if="skills" class="relative h-[300px] md:h-auto">
-                <MainSkillsets :skills="skills" />
-            </div>
-            <div class="flex h-max flex-col items-start md:items-center mx-10">
-                <div class="relative flex md:flex-col w-full mt-4 items-center mb-4">
-                    <div class="h-1 w-28 md:h-28 md:w-1 bg-slate-500"></div>
-                    <BaseRoundDecor class=" md:bottom-0 border-4 border-white scale-150" />
-                </div>
-                <h1 class="text-5xl text-vertical">My Skills</h1>
-            </div>
-        </div>
+
+        <MainSkillDrawer
+            v-if="skills"
+            :skills="skills"
+            @toggle="drawerOpen = $event"
+        />
     </section>
 </template>
-
-<style scoped>
-.text-vertical {
-    writing-mode: horizontal-tb
-}
-
-@media (min-width: 800px) {
-    .text-vertical {
-        writing-mode: vertical-rl
-    }
-}
-</style>

@@ -6,7 +6,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 </script>
 
 <template>
-  <header class="scroll-container overflow-hidden relative rounded-2xl bg-white border-2 border-black border-opacity-85 py-2 px-3">
+  <header class="relative rounded-2xl bg-paper border border-paper-edge py-2 px-3 paper-card-raised">
     <nav class="flex flex-row gap-2 sm:space-x-4 overflow-x-auto whitespace-nowrap no-scrollbar">
       <BaseNavBtn name="About Me" route="/"/>
       <BaseNavBtn name="Projects" route="/projects"/>
@@ -17,24 +17,6 @@ import { ref, onMounted, onUnmounted } from 'vue';
 </template>
 
 <style scoped>
-/* .grid-container {
-  /* Container styles (optional) */
-
-.scroll-container {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  cursor: grab;
-  user-select: none;
-}
-
-.grid-wrapper {
-  display: flex;
-  /* Allow items to flow horizontally */
-  touch-action: pan-left pan-right;
-  /* Allow drag for touchscreens */
-}
-
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
