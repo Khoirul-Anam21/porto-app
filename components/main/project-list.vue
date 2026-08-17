@@ -22,13 +22,6 @@ const allCategoryForNav = {
     name: "All",
 }
 
-const dataNav = computed(() => props.projectTypes?.map((projectType: ProjectType) => ({
-    key: projectType.id,
-    name: projectType.name,
-})))
-
-
-
 const projectData = computed(() => {
     if (tabIndex.value === null) {
         return []
@@ -39,6 +32,17 @@ const projectData = computed(() => {
 
     return props.projects?.filter((project: Project) => project.type === tabIndex.value)
 })
+
+const hasNoProjects = computed(() => {
+    return tabIndex.value !== null && projectData.value && projectData.value.length === 0
+})
+
+const dataNav = computed(() => props.projectTypes?.map((projectType: ProjectType) => ({
+    key: projectType.id,
+    name: projectType.name,
+})))
+
+
 
 const getIconFromProjectType = (typeId: number) => {
     return props.projectTypes?.filter((projectType: ProjectType) => projectType.id === typeId)[0].icon_img;
@@ -73,7 +77,7 @@ const config = useRuntimeConfig()
 <template>
     <section class="px-1 py-4">
         <span class="text-[8pt] md:hidden">Swipe >></span>
-        <BaseOption :data="[allCategoryForNav, ...dataNav]" class="mb-4 projects-filters" @update-current-option="updateOption" />
+       <BaseOption :data="[allCategoryForNav, ...dataNav]" class="mb-4 projects-filters" @update-current-option="updateOption" />
         <BaseAccordion>
             <BaseAccordionItem v-for="(item, index) in projectData"
                 :key="index" :item-id="index" class="paper-card paper-card-raised project-accordion-item">
@@ -89,20 +93,20 @@ const config = useRuntimeConfig()
                 </template>
                 <template #default>
                     <div>
-                        <ProjectCarousel v-if="item.images.length > 0" :images="item.images"
-                            @update:images="selectImages" />
+                        <!-- <ProjectCarousel v-if="item.images.length > 0" :images="item.images"
+                            @update:images="selectImages" /> -->
                         <p class="text-sm sm:text-base mb-2">{{ item.description }}</p>
-                        <p v-if="item.skills_used.length > 0" class="mb-2">Tech Stacks: </p>
-                        <div v-if="item.skills_used.length > 0" class="flex flex-wrap gap-2 mb-2">
+                        <!-- <p v-if="item.skills_used.length > 0" class="mb-2">Tech Stacks: </p> -->
+                        <!-- <div v-if="item.skills_used.length > 0" class="flex flex-wrap gap-2 mb-2">
                             <div v-for="(skill, idx) in item.skills_used" :key="idx">
                                 <div
                                     class="flex items-center gap-2 px-4 py-1 bg-leaf-light/30 text-leaf-dark rounded-full text-sm sm:text-base">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <hr v-if="item.detail" />
                         <div v-html="item.detail"
-                            class="prose prose-neutral prose-sm sm:prose-base md:prose-lg dark:prose-invert prose-li:my-0 prose-p:text-bark prose-p:text-base prose-li:text-sm prose-img:rounded-lg prose-img:w-[70%] prose-h1:text-bark prose-h1:text-3xl prose-h2:text-bark prose-h2:text-2xl prose-h3:text-bark prose-h3:text-xl overflow-hidden">
+                            class="prose prose-neutral prose-sm sm:prose-base md:prose-lg prose-li:my-0 prose-p:text-bark prose-p:text-base prose-li:text-sm prose-img:rounded-lg prose-img:w-[70%] prose-h1:text-bark prose-h1:text-3xl prose-h2:text-bark prose-h2:text-2xl prose-h3:text-bark prose-h3:text-xl overflow-hidden">
                         </div>
                     </div>
 
@@ -110,6 +114,13 @@ const config = useRuntimeConfig()
                 </template>
             </BaseAccordionItem>
         </BaseAccordion>
+        <div v-if="hasNoProjects" class="paper-card paper-card-raised p-8 text-center">
+            <div class="flex justify-center mb-4">
+                <BaseKiwiLoader />
+            </div>
+            <p class="text-bark-light text-lg">No projects here yet...</p>
+            <p class="text-bark-light/70 text-sm mt-2">This kiwi is still searching for projects!</p>
+        </div>
         <VueEasyLightbox v-if="imagesRef.length > 0" class="absolute" :visible="visibleRef" :imgs="imagesRef"
             :index="imagesIndexRef" @hide="onHide" />
     </section>

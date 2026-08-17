@@ -14,7 +14,7 @@ const isOpen = ref(true)
 const { width } = useWindowSize()
 const isMobile = computed(() => width.value < 768)
 
-const drawerWidth = computed(() => isMobile.value ? '78vw' : '140px')
+const drawerWidth = computed(() => isMobile.value ? 'fit-content' : '140px')
 
 const toggle = () => {
     isOpen.value = !isOpen.value

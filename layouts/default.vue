@@ -165,7 +165,7 @@ onBeforeUnmount(() => {
                                 alt="Profile Image"></NuxtImg>
                         </div>
                         <!-- Desktop name -->
-                        <div class="hidden md:flex flex-col items-center w-full">
+                        <div class="hidden md:flex flex-col items-center w-full mb-6">
                             <h1 class="text-2xl text-center break-words px-2">{{ stateStore.name }}</h1>
                             <p v-show="profileSheetOpen || width > 768"
                                 class="text-base text-bark-light text-center w-full break-words px-2">- {{ stateStore.jobPosition }} -</p>
@@ -222,7 +222,7 @@ onBeforeUnmount(() => {
                                 </div>
                             </div>
 
-                            <div class="flex justify-center md:block w-full">
+                            <div class="flex justify-center w-full">
                                 <BaseSmoothBtn @clicked="downloadCV" class="mt-4">Download CV</BaseSmoothBtn>
                             </div>
                         </div>
